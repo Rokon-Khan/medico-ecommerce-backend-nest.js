@@ -20,7 +20,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_MANAGE,
 
     Permission.PRODUCT_CATEGORY_CREATE,
-    Permission.PRODUCT_CATEGORY_UPDATE,
     Permission.PRODUCT_CATEGORY_DELETE,
     Permission.PRODUCT_CATEGORY_MANAGE,
 
@@ -115,8 +114,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
   [Role.MANAGER]: [
     Permission.CONTENT_READ,
     Permission.CONTENT_UPDATE,
-
-    Permission.PRODUCT_READ,
     Permission.PRODUCT_UPDATE,
     Permission.PRODUCT_REVIEW,
 
@@ -126,7 +123,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
 
   [Role.PREMIUM_USER]: [
     Permission.CONTENT_READ,
-    Permission.PRODUCT_READ,
     Permission.PROFILE_READ,
     Permission.PROFILE_UPDATE,
   ],
