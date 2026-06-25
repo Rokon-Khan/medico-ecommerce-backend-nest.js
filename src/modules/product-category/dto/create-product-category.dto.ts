@@ -61,10 +61,4 @@ export class ProductCategoryResponseDto {
   @ApiProperty({ description: 'Last update timestamp' })
   updated_at: Date;
 
-  @ApiProperty({
-    description: 'Soft delete timestamp, if the category is deleted',
-    required: false,
-    example: '2026-06-24T15:30:00.000Z',
-  })
-  deleted_at?: Date;
 }

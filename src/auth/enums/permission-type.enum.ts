@@ -1,6 +1,5 @@
 export enum Permission {
   /* =========================
-     AWS IAM–style mental models
      User Management 
   ========================= */
   USER_CREATE = 'user:create',
@@ -9,12 +8,15 @@ export enum Permission {
   USER_DELETE = 'user:delete',
   USER_MANAGE = 'user:*',
 
-  //   TRUSTED_COMPANIES_CREATE
-  TRUSTED_COMPANIES_CREATE = 'trusted-companies:create',
-  TRUSTED_COMPANIES_READ = 'trusted-companies:read',
-  TRUSTED_COMPANIES_UPDATE = 'trusted-companies:update',
-  TRUSTED_COMPANIES_DELETE = 'trusted-companies:delete',
-  TRUSTED_COMPANIES_MANAGE = 'trusted-companies:*',
+  /* =========================
+      PRODUCT_CATEGORY Management
+   ========================= */
+
+  PRODUCT_CATEGORY_CREATE = 'product_category:create',
+  PRODUCT_CATEGORY_READ = 'product_category:read',
+  PRODUCT_CATEGORY_UPDATE = 'product_category:update',
+  PRODUCT_CATEGORY_DELETE = 'product_category:delete',
+  PRODUCT_CATEGORY_MANAGE = 'product_category:*',
 
   /* =========================
        Our Work Process Management
@@ -77,15 +79,6 @@ export enum Permission {
   BLOG_CATEGORY_MANAGE = 'category:*',
 
   /* =========================
-     BusinessWeCover Management
-  ========================= */
-  BUSINESS_WC_CREATE = 'business-we-cover:create',
-  BUSINESS_WC_READ = 'business-we-cover:read',
-  BUSINESS_WC_UPDATE = 'business-we-cover:update',
-  BUSINESS_WC_DELETE = 'business-we-cover:delete',
-  BUSINESS_WC_MANAGE = 'business-we-cover:*',
-
-  /* =========================
    Why Choose Us Management
 ========================= */
   WHY_CHOOSE_US_CREATE = 'why-choose-us:create',
@@ -122,15 +115,6 @@ export enum Permission {
   PRICING_FEATURE_MANAGE = 'pricing-feature:*',
 
   /* =========================
-   Service Management
-========================= */
-  SERVICES_CREATE = 'services:create',
-  SERVICES_READ = 'services:read',
-  SERVICES_UPDATE = 'services:update',
-  SERVICES_DELETE = 'services:delete',
-  SERVICES_MANAGE = 'services:*',
-
-  /* =========================
    Hero Management
 ========================= */
   HEROES_CREATE = 'heroes:create',
@@ -147,21 +131,6 @@ export enum Permission {
   TESTIMONIALS_DELETE = 'testimonials:delete',
   TESTIMONIALS_MANAGE = 'testimonials:*',
 
-  PARTNERS_CREATE = 'partners:create',
-  PARTNERS_READ = 'partners:read',
-  PARTNERS_UPDATE = 'partners:update',
-  PARTNERS_DELETE = 'partners:delete',
-  PARTNERS_MANAGE = 'partners:*',
-
-  /* =========================
-   Assign Pricing Feature Management
-========================= */
-  ASSIGEN_PRICING_FEATURE_CREATE = 'assigen-pricing-features:create',
-  ASSIGEN_PRICEN_FEATURE_READ = 'assigen-pricing-features:read',
-  ASSIGEN_PRICEN_FEATURE_UPDATE = 'assigen-pricing-features:update',
-  ASSIGEN_PRICEN_FEATURE_DELETE = 'assigen-pricing-features:delete',
-  ASSIGEN_PRICEN_FEATURE_MANAGE = 'assigen-pricing-features:*',
-
   /* =========================
      Product Management
   ========================= */
@@ -172,75 +141,11 @@ export enum Permission {
   PRODUCT_REVIEW = 'product:review',
   PRODUCT_MANAGE = 'product:*',
 
-  BLOGS_CREATE = 'blogs:create',
-  BLOGS_READ = 'blogs:read',
-  BLOGS_UPDATE = 'blogs:update',
-  BLOGS_DELETE = 'blogs:delete',
-  BLOGS_REVIEW = 'blogs:review',
-  BLOGS_MANAGE = 'blogs:*',
-
-  BLOG_DETAILS_CREATE = 'blog-details:create',
-  BLOG_DETAILS_READ = 'blog-details:read',
-  BLOG_DETAILS_UPDATE = 'blog-details:update',
-  BLOG_DETAILS_DELETE = 'blog-details:delete',
-  BLOG_DETAILS_REVIEW = 'blog-details:review',
-  BLOG_DETAILS_MANAGE = 'blog-details:*',
-
-  PORTFOLIO_DETAILS_CREATE = 'portfolio-details:create',
-  PORTFOLIO_DETAILS_READ = 'portfolio-details:read',
-  PORTFOLIO_DETAILS_UPDATE = 'portfolio-details:update',
-  PORTFOLIO_DETAILS_DELETE = 'portfolio-details:delete',
-  PORTFOLIO_DETAILS_REVIEW = 'portfolio-details:review',
-  PORTFOLIO_DETAILS_MANAGE = 'portfolio-details:*',
-
-  PORTFOLIO_CATEGORY_CREATE = 'portfolio-category:create',
-  PORTFOLIO_CATEGORY_READ = 'portfolio-category:read',
-  PORTFOLIO_CATEGORY_UPDATE = 'portfolio-category:update',
-  PORTFOLIO_CATEGORY_DELETE = 'portfolio-category:delete',
-  PORTFOLIO_CATEGORY_MANAGE = 'portfolio-category:*',
-
-  PORTFOLIO_DELETE = 'portfolio:delete',
-  PORTFOLIO_CREATE = 'portfolio:create',
-  PORTFOLIO_READ = 'portfolio:read',
-  PORTFOLIO_UPDATE = 'portfolio:update',
-  PORTFOLIO_MANAGE = 'portfolio:*',
-
-  SERVICE_FAQ_CREATE = 'service-faq:create',
-  SERVICE_FAQ_READ = 'service-faq:read',
-  SERVICE_FAQ_UPDATE = 'service-faq:update',
-  SERVICE_FAQ_DELETE = 'service-faq:delete',
-  SERVICE_FAQ_MANAGE = 'service-faq:manage',
-
-  SERVICE_WORK_FLOW_CREATE = 'service-work-flow:create',
-  SERVICE_WORK_FLOW_READ = 'service-work-flow:read',
-  SERVICE_WORK_FLOW_UPDATE = 'service-work-flow:update',
-  SERVICE_WORK_FLOW_DELETE = 'service-work-flow:delete',
-  SERVICE_WORK_FLOW_MANAGE = 'service-work-flow:*',
-
   /* =========================
      Profile
   ========================= */
   PROFILE_READ = 'profile:read',
   PROFILE_UPDATE = 'profile:update',
-
-  /* =========================
-     Media Management
-  ========================= */
-  MEDIA_UPLOAD = 'media:upload',
-  MEDIA_READ = 'media:read',
-  MEDIA_DELETE = 'media:delete',
-  MEDIA_MANAGE = 'media:*',
-
-  /* =========================
-     Lead / Enquiry Management
-  ========================= */
-  LEAD_READ = 'lead:read',
-  LEAD_UPDATE = 'lead:update',
-  LEAD_DELETE = 'lead:delete',
-
-  ENQUIRY_READ = 'enquiry:read',
-  ENQUIRY_REPLY = 'enquiry:reply',
-  ENQUIRY_DELETE = 'enquiry:delete',
 
   /* =========================
      Order & Payment
@@ -260,10 +165,7 @@ export enum Permission {
   SETTINGS_UPDATE = 'settings:update',
 
   /* =========================
-     Analytics & Export
-  ========================= */
-  ANALYTICS_READ = 'analytics:read',
-  DATA_EXPORT = 'data:export',
+
 
   /* =========================
      System Administration
@@ -272,53 +174,4 @@ export enum Permission {
   SYSTEM_UPDATE = 'system:update',
   SYSTEM_MANAGE = 'system:*',
   BULK_OPERATION = 'system:bulk-operation',
-
-  /* =========================
-     Subscription
-  ========================= */
-  SUBSCRIPTION_CREATE = 'subscription:create',
-  SUBSCRIPTION_READ = 'subscription:read',
-  SUBSCRIPTION_UPDATE = 'subscription:update',
-  SUBSCRIPTION_DELETE = 'subscription:delete',
-  SUBSCRIPTION_MANAGE = 'subscription:*',
-
-  //   service_video
-  SERVICE_VIDEO_CREATE = 'service_video.create',
-  SERVICE_VIDEO_READ = 'service_video.read',
-  SERVICE_VIDEO_UPDATE = 'service_video.update',
-  SERVICE_VIDEO_DELETE = 'service_video.delete',
-  SERVICE_VIDEO_MANAGE = 'service_video:*',
-  //  service_review_create
-  SERVICE_REVIEW_CREATE = 'service_review_create',
-  SERVICE_REVIEW_READ = 'service_review_read',
-  SERVICE_REVIEW_UPDATE = 'service_review_update',
-  SERVICE_REVIEW_DELETE = 'service_review_delete',
-  SERVICE_REVIEW_MANAGE = 'service_review_delete',
-
-  /* =========================
-   OMS  Video
-  ========================= */
-  VIDEO_CREATE = 'video:create',
-  VIDEO_READ = 'video:read',
-  VIDEO_UPDATE = 'video:update',
-  VIDEO_DELETE = 'video:delete',
-  VIDEO_MANAGE = 'video:*',
-
-  BUSINESS_PARTNER_CREATE = 'business_partner:create',
-  BUSINESS_PARTNER_READ = 'business_partner:read',
-  BUSINESS_PARTNER_UPDATE = 'business_partner:update',
-  BUSINESS_PARTNER_DELETE = 'business_partner:delete',
-  BUSINESS_PARTNER_MANAGE = 'business_partner:*',
-
-  AD_PLATFORM_CREATE = 'ad_platform:create',
-  AD_PLATFORM_READ = 'ad_platform:read',
-  AD_PLATFORM_UPDATE = 'ad_platform:update',
-  AD_PLATFORM_DELETE = 'ad_platform:delete',
-  AD_PLATFORM_MANAGE = 'ad_platform:*',
-
-  CREATIVE_CREATE = 'creative:create',
-  CREATIVE_READ = 'creative:read',
-  CREATIVE_UPDATE = 'creative:update',
-  CREATIVE_DELETE = 'creative:delete',
-  CREATIVE_MANAGE = 'creative:*',
 }
