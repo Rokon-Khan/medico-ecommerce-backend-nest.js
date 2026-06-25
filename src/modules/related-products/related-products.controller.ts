@@ -19,13 +19,11 @@ import {
   RelatedProductResponseDto,
 } from './dto/create-related-product.dto';
 import { UpdateRelatedProductDto } from './dto/update-related-product.dto';
-
 import { ApiDoc } from 'src/auth/decorators/swagger.decorator';
 import { JwtOrApiKeyGuard } from 'src/auth/guards/jwt-or-api-key.guard';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RequirePermissions } from 'src/auth/decorators/permissions.decorator';
 import { Permission } from 'src/auth/enums/permission-type.enum';
-
 import type { Request } from 'express';
 import { Throttle } from '@nestjs/throttler';
 
