@@ -105,6 +105,17 @@ export class ProductDetailResponseDto {
     name: string;
     slug: string;
   };
+  @ApiProperty({
+    description: 'User who created this product',
+    required: false,
+    type: Object,
+  })
+  addedBy?: {
+    id: string;
+    name?: string;
+    email?: string;
+    role?: string;
+  };
 
   @ApiProperty()
   created_at: Date;

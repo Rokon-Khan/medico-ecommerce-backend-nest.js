@@ -162,6 +162,16 @@ export enum Permission {
   PRODUCT_MANAGE = 'product:*',
 
   /* =========================
+   PRODUCT DETAIL Management
+========================= */
+
+  PRODUCT_DETAIL_CREATE = 'product_detail:create',
+  PRODUCT_DETAIL_READ = 'product_detail:read',
+  PRODUCT_DETAIL_UPDATE = 'product_detail:update',
+  PRODUCT_DETAIL_DELETE = 'product_detail:delete',
+  PRODUCT_DETAIL_MANAGE = 'product_detail:*',
+
+  /* =========================
      Profile
   ========================= */
   PROFILE_READ = 'profile:read',

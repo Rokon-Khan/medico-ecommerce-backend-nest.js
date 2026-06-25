@@ -1,9 +1,11 @@
 import { Product } from 'src/modules/products/entities/product.entity';
+import { User } from 'src/modules/users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -62,6 +64,18 @@ export class ProductDetail {
     nullable: true,
   })
   storage?: string;
+
+  @Column({
+    type: 'bigint',
+    nullable: false,
+  })
+  added_by: string;
+  @ManyToOne(() => User, {
+    nullable: false,
+    onDelete: 'RESTRICT',
+  })
+  @JoinColumn({ name: 'added_by' })
+  addedBy: User;
 
   @CreateDateColumn({
     name: 'created_at',
