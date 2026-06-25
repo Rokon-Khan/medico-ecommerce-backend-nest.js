@@ -19,6 +19,36 @@ export enum Permission {
   PRODUCT_CATEGORY_MANAGE = 'product_category:*',
 
   /* =========================
+     Product Management
+  ========================= */
+  PRODUCT_CREATE = 'product:create',
+  PRODUCT_READ = 'product:read',
+  PRODUCT_UPDATE = 'product:update',
+  PRODUCT_DELETE = 'product:delete',
+  PRODUCT_REVIEW = 'product:review',
+  PRODUCT_MANAGE = 'product:*',
+
+  /* =========================
+   PRODUCT DETAIL Management
+========================= */
+
+  PRODUCT_DETAIL_CREATE = 'product_detail:create',
+  PRODUCT_DETAIL_READ = 'product_detail:read',
+  PRODUCT_DETAIL_UPDATE = 'product_detail:update',
+  PRODUCT_DETAIL_DELETE = 'product_detail:delete',
+  PRODUCT_DETAIL_MANAGE = 'product_detail:*',
+
+  /* =========================
+    PRODUCT_VARIANT Management
+========================= */
+
+  PRODUCT_VARIANT_CREATE = 'product_variant:create',
+  PRODUCT_VARIANT_READ = 'product_variant:read',
+  PRODUCT_VARIANT_UPDATE = 'product_variant:update',
+  PRODUCT_VARIANT_DELETE = 'product_variant:delete',
+  PRODUCT_VARIANT_MANAGE = 'product_variant:*',
+
+  /* =========================
     GENERIC Management
 ========================= */
 
@@ -150,26 +180,6 @@ export enum Permission {
   TESTIMONIALS_UPDATE = 'testimonials:update',
   TESTIMONIALS_DELETE = 'testimonials:delete',
   TESTIMONIALS_MANAGE = 'testimonials:*',
-
-  /* =========================
-     Product Management
-  ========================= */
-  PRODUCT_CREATE = 'product:create',
-  PRODUCT_READ = 'product:read',
-  PRODUCT_UPDATE = 'product:update',
-  PRODUCT_DELETE = 'product:delete',
-  PRODUCT_REVIEW = 'product:review',
-  PRODUCT_MANAGE = 'product:*',
-
-  /* =========================
-   PRODUCT DETAIL Management
-========================= */
-
-  PRODUCT_DETAIL_CREATE = 'product_detail:create',
-  PRODUCT_DETAIL_READ = 'product_detail:read',
-  PRODUCT_DETAIL_UPDATE = 'product_detail:update',
-  PRODUCT_DETAIL_DELETE = 'product_detail:delete',
-  PRODUCT_DETAIL_MANAGE = 'product_detail:*',
 
   /* =========================
      Profile

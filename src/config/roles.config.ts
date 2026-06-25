@@ -38,6 +38,12 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.BRAND_DELETE,
     Permission.BRAND_MANAGE,
 
+    Permission.PRODUCT_VARIANT_CREATE,
+
+    Permission.PRODUCT_VARIANT_UPDATE,
+    Permission.PRODUCT_VARIANT_DELETE,
+    Permission.PRODUCT_VARIANT_MANAGE,
+
     Permission.WHY_CHOOSE_US_CREATE,
     Permission.WHY_CHOOSE_US_READ,
     Permission.WHY_CHOOSE_US_UPDATE,
@@ -142,5 +148,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_DETAIL_READ,
     Permission.GENERIC_READ,
     Permission.BRAND_READ,
+    Permission.PRODUCT_VARIANT_READ,
   ],
 };
