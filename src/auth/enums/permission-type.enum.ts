@@ -29,6 +29,16 @@ export enum Permission {
   GENERIC_MANAGE = 'generic:*',
 
   /* =========================
+    BRAND Management
+========================= */
+
+  BRAND_CREATE = 'brand:create',
+  BRAND_READ = 'brand:read',
+  BRAND_UPDATE = 'brand:update',
+  BRAND_DELETE = 'brand:delete',
+  BRAND_MANAGE = 'brand:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',

@@ -8,20 +8,17 @@ import {
   Delete,
   Query,
   Req,
-  ParseUUIDPipe,
   HttpStatus,
   UseGuards,
 } from '@nestjs/common';
 import { GenericsService } from './generics.service';
 import { CreateGenericDto, GenericResponseDto } from './dto/create-generic.dto';
 import { UpdateGenericDto } from './dto/update-generic.dto';
-
 import { ApiDoc } from 'src/auth/decorators/swagger.decorator';
 import { JwtOrApiKeyGuard } from 'src/auth/guards/jwt-or-api-key.guard';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RequirePermissions } from 'src/auth/decorators/permissions.decorator';
 import { Permission } from 'src/auth/enums/permission-type.enum';
-
 import type { Request } from 'express';
 import { Throttle } from '@nestjs/throttler';
 
@@ -63,7 +60,7 @@ export class GenericsController {
   @UseGuards(JwtOrApiKeyGuard)
   @Get(':id')
   findOne(
-    @Param('id', ParseUUIDPipe)
+    @Param('id')
     id: string,
   ) {
     return this.genericsService.findOne(id);
@@ -81,7 +78,7 @@ export class GenericsController {
   @Throttle({ default: { limit: 20, ttl: 180 } })
   @Patch(':id')
   update(
-    @Param('id', ParseUUIDPipe)
+    @Param('id')
     id: string,
     @Body() updateGenericDto: UpdateGenericDto,
   ) {
@@ -99,7 +96,7 @@ export class GenericsController {
   @Throttle({ default: { limit: 20, ttl: 180 } })
   @Delete(':id')
   remove(
-    @Param('id', ParseUUIDPipe)
+    @Param('id')
     id: string,
   ) {
     return this.genericsService.remove(id);

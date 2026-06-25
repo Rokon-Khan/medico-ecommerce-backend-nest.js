@@ -20,27 +20,19 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_MANAGE,
 
     Permission.PRODUCT_CATEGORY_CREATE,
-    Permission.PRODUCT_CATEGORY_READ,
     Permission.PRODUCT_CATEGORY_UPDATE,
     Permission.PRODUCT_CATEGORY_DELETE,
     Permission.PRODUCT_CATEGORY_MANAGE,
 
     Permission.GENERIC_CREATE,
-    Permission.GENERIC_READ,
     Permission.GENERIC_UPDATE,
     Permission.GENERIC_DELETE,
     Permission.GENERIC_MANAGE,
 
-    Permission.CATEGORY_CREATE,
-    Permission.CATEGORY_READ,
-    Permission.CATEGORY_UPDATE,
-    Permission.CATEGORY_DELETE,
-
-    Permission.BLOG_CATEGORY_CREATE,
-    Permission.BLOG_CATEGORY_READ,
-    Permission.BLOG_CATEGORY_UPDATE,
-    Permission.BLOG_CATEGORY_DELETE,
-    Permission.BLOG_CATEGORY_MANAGE,
+    Permission.BRAND_CREATE,
+    Permission.BRAND_UPDATE,
+    Permission.BRAND_DELETE,
+    Permission.BRAND_MANAGE,
 
     Permission.WHY_CHOOSE_US_CREATE,
     Permission.WHY_CHOOSE_US_READ,
@@ -95,12 +87,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.SYSTEM_UPDATE,
     Permission.BULK_OPERATION,
 
-    Permission.OUR_WORK_PROCESSES_CREATE,
-    Permission.OUR_WORK_PROCESSES_READ,
-    Permission.OUR_WORK_PROCESSES_UPDATE,
-    Permission.OUR_WORK_PROCESSES_DELETE,
-    Permission.OUR_WORK_PROCESSES_MANAGE,
-
     Permission.QUESTION_ANSWER_CREATE,
     Permission.QUESTION_ANSWER_READ,
     Permission.QUESTION_ANSWER_UPDATE,
@@ -150,5 +136,9 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_READ,
     Permission.PROFILE_READ,
     Permission.PROFILE_UPDATE,
+
+    Permission.PRODUCT_CATEGORY_READ,
+    Permission.GENERIC_READ,
+    Permission.BRAND_READ,
   ],
 };

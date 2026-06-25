@@ -24,6 +24,7 @@ import { AccessTokenStrategy, RefreshTokenStrategy } from './auth/strategies';
 import { FileUploadsModule } from './common/file-uploads/file-uploads.modules';
 import { ProductCategoryModule } from './modules/product-category/product-category.module';
 import { GenericsModule } from './modules/generics/generics.module';
+import { BrandsModule } from './modules/brands/brands.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -75,6 +76,7 @@ const ENV = process.env.NODE_ENV;
     FileUploadsModule,
     ProductCategoryModule,
     GenericsModule,
+    BrandsModule,
   ],
 
   controllers: [AppController],
