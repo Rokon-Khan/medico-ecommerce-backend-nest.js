@@ -49,6 +49,16 @@ export enum Permission {
   PRODUCT_VARIANT_MANAGE = 'product_variant:*',
 
   /* =========================
+    RELATED_PRODUCT Management
+========================= */
+
+  RELATED_PRODUCT_CREATE = 'related_product:create',
+  RELATED_PRODUCT_READ = 'related_product:read',
+  RELATED_PRODUCT_UPDATE = 'related_product:update',
+  RELATED_PRODUCT_DELETE = 'related_product:delete',
+  RELATED_PRODUCT_MANAGE = 'related_product:*',
+
+  /* =========================
     GENERIC Management
 ========================= */
 
