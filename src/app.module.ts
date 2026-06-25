@@ -23,6 +23,7 @@ import { DataResponseInterceptor } from './common/interceptors/data-response/dat
 import { AccessTokenStrategy, RefreshTokenStrategy } from './auth/strategies';
 import { FileUploadsModule } from './common/file-uploads/file-uploads.modules';
 import { ProductCategoryModule } from './modules/product-category/product-category.module';
+import { GenericsModule } from './modules/generics/generics.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -73,6 +74,7 @@ const ENV = process.env.NODE_ENV;
     MailModule,
     FileUploadsModule,
     ProductCategoryModule,
+    GenericsModule,
   ],
 
   controllers: [AppController],

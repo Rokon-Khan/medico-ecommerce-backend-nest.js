@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, IsOptional, IsUrl } from 'class-validator';
 
-/**
- * DTO for creating a Product Category entry
- */
 export class CreateProductCategoryDto {
   @ApiProperty({
     description: 'Name of the product category',
@@ -12,7 +9,6 @@ export class CreateProductCategoryDto {
   @IsString()
   @IsNotEmpty()
   name: string;
-
 
   @ApiProperty({
     description: 'Optional category display banner or thumbnail image URL',
@@ -24,7 +20,6 @@ export class CreateProductCategoryDto {
   image?: string;
 }
 
-
 /**
  * Response DTO for Product Category entity
  */
@@ -35,8 +30,6 @@ export class ProductCategoryResponseDto {
   @ApiProperty({ description: 'Name of the product category' })
   name: string;
 
-
-
   @ApiProperty({
     description: 'Category image URL',
     required: false,
@@ -44,7 +37,8 @@ export class ProductCategoryResponseDto {
   image?: string;
 
   @ApiProperty({
-    description: 'Information about the staff or admin who created this category',
+    description:
+      'Information about the staff or admin who created this category',
     required: false,
     type: Object,
   })
@@ -60,5 +54,4 @@ export class ProductCategoryResponseDto {
 
   @ApiProperty({ description: 'Last update timestamp' })
   updated_at: Date;
-
 }

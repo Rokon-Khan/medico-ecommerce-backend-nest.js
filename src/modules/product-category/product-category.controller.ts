@@ -42,7 +42,7 @@ export class ProductCategoryController {
     response: ProductCategoryResponseDto,
     status: HttpStatus.OK,
   })
-  @RequirePermissions(Permission.PRODUCT_CATEGORY_CREATE) // Assuming this naming convention exists in your enum
+  @RequirePermissions(Permission.PRODUCT_CATEGORY_CREATE)
   @UseGuards(JwtOrApiKeyGuard, PermissionsGuard)
   @UseInterceptors(FileInterceptor('image'))
   @Throttle({ default: { limit: 20, ttl: 180 } })
