@@ -19,6 +19,16 @@ export enum Permission {
   PRODUCT_CATEGORY_MANAGE = 'product_category:*',
 
   /* =========================
+    GENERIC Management
+========================= */
+
+  GENERIC_CREATE = 'generic:create',
+  GENERIC_READ = 'generic:read',
+  GENERIC_UPDATE = 'generic:update',
+  GENERIC_DELETE = 'generic:delete',
+  GENERIC_MANAGE = 'generic:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',

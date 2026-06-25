@@ -25,6 +25,12 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_CATEGORY_DELETE,
     Permission.PRODUCT_CATEGORY_MANAGE,
 
+    Permission.GENERIC_CREATE,
+    Permission.GENERIC_READ,
+    Permission.GENERIC_UPDATE,
+    Permission.GENERIC_DELETE,
+    Permission.GENERIC_MANAGE,
+
     Permission.CATEGORY_CREATE,
     Permission.CATEGORY_READ,
     Permission.CATEGORY_UPDATE,
