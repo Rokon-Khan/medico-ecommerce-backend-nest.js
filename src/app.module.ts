@@ -31,6 +31,7 @@ import { ProductVariantsModule } from './modules/product-variants/product-varian
 import { RelatedProductsModule } from './modules/related-products/related-products.module';
 import { AddressModule } from './modules/address/address.module';
 import { CartsModule } from './modules/carts/carts.module';
+import { CartItemsModule } from './modules/cart-items/cart-items.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -89,6 +90,7 @@ const ENV = process.env.NODE_ENV;
     RelatedProductsModule,
     AddressModule,
     CartsModule,
+    CartItemsModule,
   ],
 
   controllers: [AppController],
