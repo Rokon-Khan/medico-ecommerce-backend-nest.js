@@ -67,6 +67,8 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.ORDER_READ,
     Permission.ORDER_UPDATE,
     Permission.ORDER_DELETE,
+    Permission.ORDER_CREATE,
+
     Permission.PAYMENT_READ,
     Permission.PAYMENT_UPDATE,
     Permission.PAYMENT_DELETE,

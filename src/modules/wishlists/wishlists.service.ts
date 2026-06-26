@@ -94,14 +94,26 @@ export class WishlistsService {
   /**
    * Get Single Wishlist
    */
+  /**
+   * Get Single Wishlist
+   */
   async findOne(req: Request, id: string): Promise<WishlistResponseDto> {
-    const userId = req.user?.sub;
+    const user = req.user;
+
+    if (!user) {
+      throw new UnauthorizedException('Authentication required.');
+    }
+
+    const where =
+      user.role === Role.SUPER_ADMIN || user.role === Role.ADMIN
+        ? { id }
+        : {
+            id,
+            user_id: String(user.sub),
+          };
 
     const wishlist = await this.wishlistRepo.findOne({
-      where: {
-        id,
-        user_id: String(userId),
-      },
+      where,
       relations: ['user', 'product'],
     });
 

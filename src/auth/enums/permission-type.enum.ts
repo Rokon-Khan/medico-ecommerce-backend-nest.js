@@ -240,6 +240,7 @@ export enum Permission {
   /* =========================
      Order & Payment
   ========================= */
+  ORDER_CREATE = 'order:create',
   ORDER_READ = 'order:read',
   ORDER_UPDATE = 'order:update',
   ORDER_DELETE = 'order:delete',

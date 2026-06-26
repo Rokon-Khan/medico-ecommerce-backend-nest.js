@@ -1,3 +1,4 @@
+import { CartItem } from 'src/modules/cart-items/entities/cart-item.entity';
 import { User } from 'src/modules/users/entities/user.entity';
 
 import {
@@ -7,6 +8,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,10 +18,6 @@ import {
 export class Cart {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  /* =========================
-            User
-     ========================= */
 
   @Column({
     type: 'uuid',
@@ -35,9 +33,8 @@ export class Cart {
   })
   user: User;
 
-  /* =========================
-          Timestamps
-     ========================= */
+  @OneToMany(() => CartItem, (item) => item.cart)
+  cartItems: CartItem[];
 
   @CreateDateColumn({
     name: 'created_at',
