@@ -16,7 +16,7 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
 
   [Role.ADMIN]: [
     Permission.USER_MANAGE,
-    Permission.CONTENT_MANAGE,
+
     Permission.PRODUCT_MANAGE,
 
     Permission.PRODUCT_CATEGORY_CREATE,
@@ -52,24 +52,17 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.ADDRESS_DELETE,
     Permission.ADDRESS_MANAGE,
 
-    Permission.HEROES_CREATE,
-    Permission.HEROES_READ,
-    Permission.HEROES_UPDATE,
-    Permission.HEROES_DELETE,
-    Permission.HEROES_MANAGE,
-
-    Permission.TESTIMONIALS_CREATE,
-    Permission.TESTIMONIALS_READ,
-    Permission.TESTIMONIALS_UPDATE,
-    Permission.TESTIMONIALS_DELETE,
-    Permission.TESTIMONIALS_MANAGE,
-
     Permission.ORDER_DELETE,
     Permission.ORDER_CREATE,
 
     Permission.PAYMENT_READ,
     Permission.PAYMENT_UPDATE,
     Permission.PAYMENT_DELETE,
+
+    Permission.INVENTORY_LOG_CREATE,
+    Permission.INVENTORY_LOG_READ,
+    Permission.INVENTORY_LOG_UPDATE,
+    Permission.INVENTORY_LOG_DELETE,
 
     Permission.PROFILE_READ,
     Permission.PROFILE_UPDATE,
@@ -83,8 +76,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
   ],
 
   [Role.MANAGER]: [
-    Permission.CONTENT_READ,
-    Permission.CONTENT_UPDATE,
     Permission.PRODUCT_UPDATE,
     Permission.PRODUCT_REVIEW,
 
@@ -92,14 +83,9 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.ORDER_UPDATE,
   ],
 
-  [Role.PREMIUM_USER]: [
-    Permission.CONTENT_READ,
-    Permission.PROFILE_READ,
-    Permission.PROFILE_UPDATE,
-  ],
+  [Role.PREMIUM_USER]: [Permission.PROFILE_READ, Permission.PROFILE_UPDATE],
 
   [Role.USER]: [
-    Permission.CONTENT_READ,
     Permission.PRODUCT_READ,
     Permission.PROFILE_READ,
     Permission.PROFILE_UPDATE,
