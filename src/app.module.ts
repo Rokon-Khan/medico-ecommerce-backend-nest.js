@@ -44,6 +44,7 @@ import { PrescriptionsModule } from './modules/prescriptions/prescriptions.modul
 import { BannersModule } from './modules/banners/banners.module';
 import { AuditLogsModule } from './modules/audit-logs/audit-logs.module';
 import { OrderTrackingModule } from './modules/order-tracking/order-tracking.module';
+import { ProductSearchModule } from './modules/product-search/product-search.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -115,6 +116,7 @@ const ENV = process.env.NODE_ENV;
     BannersModule,
     AuditLogsModule,
     OrderTrackingModule,
+    ProductSearchModule,
   ],
 
   controllers: [AppController],
