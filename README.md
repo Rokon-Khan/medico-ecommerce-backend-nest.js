@@ -1,285 +1,414 @@
-<p align="center"> <a href="https://nestjs.com/" target="_blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="NestJS Logo" /> </a> </p> <h1 align="center">Digital Product Selling Backend API</h1> <p align="center"> A scalable, secure, and production-ready REST API for a digital product-selling platform built with <a href="https://nestjs.com" target="_blank">NestJS</a>. </p> <p align="center"> 🔗 <b>Live API:</b> https://agency-website-nest-js-backend.onrender.com/api/v1 </p> <p align="center"> 📘 <b>Swagger API Docs:</b> https://agency-website-nest-js-backend.onrender.com/api/v1/swagger </p>
+<p align="center">
+  <a href="https://nestjs.com/" target="_blank">
+    <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="NestJS Logo" />
+  </a>
+</p>
+
+<h1 align="center">🏥 Medico - Pharmaceutical E-Commerce Platform</h1>
+
+<p align="center">
+  <strong>A Production-Grade Pharmaceutical E-Commerce Backend API</strong><br/>
+  Built with <a href="https://nestjs.com" target="_blank">NestJS</a>, TypeORM, PostgreSQL, and Redis
+</p>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" alt="NestJS"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
+</p>
+
+<p align="center">
+  <strong>🔗 Live API:</strong> <a href="#">https://api.medico.com/api/v1</a><br/>
+  <strong>📘 Swagger Docs:</strong> <a href="#">https://api.medico.com/api/v1/swagger</a>
 </p>
 
 ---
 
-## 🚀 Overview
+## 📋 Table of Contents
 
-This project is a **production-grade backend API** for a **digital product-selling platform**, enabling product/service management, user interactions, transactions, and secure access control.
-
-## Key Features
-
-- Designed and developed a scalable RESTful API for a digital product-selling platform
-- Implemented secure authentication & authorization using JWT, OTP verification, email verification, and password recovery
-- Built role-based access control (RBAC) for Super Admin, Admin, Manager, and User roles
-- Developed advanced backend features including search, filtering, pagination, and validation
-- Integrated secure transaction and payment workflows for digital product/service access
-- Designed and optimized PostgreSQL database schemas using TypeORM
-- Optimized backend performance for scalable, multi-user environments and high-volume data processing
-- Documented APIs using Swagger (OpenAPI) for seamless integration and developer experience
-
-Designed for **scalability**, **maintainability**, and **real-world usage**.
+- [Overview](#-overview)
+- [Business Context](#-business-context)
+- [Key Features](#-key-features)
+- [Industry Standards](#-industry-standards)
+- [Technical Architecture](#-technical-architecture)
+- [Modules & Features](#-modules--features)
+- [Database Design](#-database-design)
+- [Security Implementation](#-security-implementation)
+- [Performance Optimization](#-performance-optimization)
+- [API Documentation](#-api-documentation)
+- [Deployment](#-deployment)
 
 ---
 
-## 🧱 Tech Stack
+## 🎯 Overview
 
-- **Framework:** NestJS
-- **Language:** TypeScript
-- **Database:** PostgreSQL / MySQL (via TypeORM)
-- **ORM:** TypeORM
-- **Validation:** class-validator
-- **Documentation:** Swagger (OpenAPI)
-- **Auth:** JWT (Access & Refresh Tokens)
-- **API Style:** REST + HATEOAS
-- **Pagination:** Custom DataQueryService
-- **Environment:** Node.js
+**Medico** is an enterprise-grade pharmaceutical e-commerce platform backend API designed to facilitate online medicine purchasing with prescription management, secure payment processing, and comprehensive order tracking.
 
----
+This platform addresses the growing demand for **digital healthcare solutions** in Bangladesh and beyond, providing a seamless experience for customers, pharmacists, and administrators.
 
-## Core Capabilities
+### 🌟 Business Value
 
-- Product / Service Management API
-- Order & Transaction Handling
-- Secure Authentication System
-- Role-Based Access Control (RBAC)
-- Advanced Search & Filtering
-- Pagination System
-- Scalable Database Design
-
-## Architecture Highlights
-
-- Modular NestJS architecture
-- DTO-based validation layer
-- Centralized response handling
-- Reusable pagination & query system
-- Soft delete strategy
-- Secure token-based authentication
-- Clean separation of concerns
-
-## Authentication Flow
-
-- JWT Access Token
-- Refresh Token Rotation
-- OTP Verification
-- Email Verification
-- Password Recovery System
-- Secure HTTP-only cookie handling
-
-## Database Design
-
-- PostgreSQL relational schema
-- Optimized indexing & query performance
-- TypeORM entity-based modeling
-- Scalable multi-table relationships
-
-## Performance Optimization
-
-- Optimized backend for multi-user scalable environments
-- Efficient query handling for high-volume data processing
-- Reduced API response time with structured pagination
-- Improved system reliability under load
-
-## 📂 Project Structure
-
-```
-src/
-├── auth/                 # Authentication & authorization
-├── categories/           # Category module (CRUD)
-├── common/
-│   ├── interceptors/     # Global response interceptor
-│   ├── decorators/       # Custom decorators
-│   ├── data-query/       # Pagination, filtering, search
-│   └── response-dto/     # Standard API response contracts
-├── config/               # Environment & app configuration
-├── database/             # TypeORM config & migrations
-├── main.ts               # App bootstrap
-└── app.module.ts
-```
+- **Digital Healthcare Access:** Enable customers to order medicines online with prescription upload
+- **Pharmacy Automation:** Streamline pharmacy operations with digital order management
+- **Regulatory Compliance:** Built-in prescription validation and audit trails
+- **Scalable Infrastructure:** Ready to handle thousands of concurrent users
+- **Data-Driven Insights:** Comprehensive analytics for business intelligence
 
 ---
 
-## ⚙️ Environment Setup
+## 🏥 Business Context
 
-Create a `.env` file in the root directory:
+### Target Users
 
-```env
-NODE_ENV=development
-PORT=3000
+| Role            | Description                    | Key Responsibilities                                                  |
+| --------------- | ------------------------------ | --------------------------------------------------------------------- |
+| **Customer**    | End-user purchasing medicines  | Browse products, upload prescriptions, place orders, track deliveries |
+| **Pharmacist**  | Pharmacy staff managing orders | Verify prescriptions, process orders, manage inventory                |
+| **Manager**     | Store/Operation manager        | Oversee operations, manage staff, handle escalations                  |
+| **Admin**       | Super administrator            | System configuration, user management, audit oversight                |
+| **Super Admin** | System owner                   | Full system access, platform governance                               |
 
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_USER=postgres
-DATABASE_PASSWORD=postgres
-DATABASE_NAME=app_db
+### Business Workflows
 
-JWT_ACCESS_SECRET=your_access_secret
-JWT_REFRESH_SECRET=your_refresh_secret
-```
+Customer Journey:
 
----
+-- Registration & Authentication
 
-## 📦 Installation
+-- Browse/Search Medicines
 
-```bash
-bun install
-```
+-- Upload Prescription (if required)
 
----
+-- Add to Cart & Checkout
 
-## ▶️ Running the App
+-- Payment Processing
 
-```bash
-# Development
-bun run start:dev
+-- Order Tracking
 
-# Production
-bun run build
-bun run start:prod
-```
+-- Delivery & Feedback
 
----
+Pharmacy Workflow:
 
-## 🧪 Testing
+-- Prescription Verification
 
-```bash
-# Unit tests
-bun run test
+-- Order Processing
 
-# E2E tests
-bun run test:e2e
+-- Inventory Update
 
-# Coverage
-bun run test:cov
-```
+-- Dispatching & Delivery
+
+-- Return/Refund Handling
 
 ---
 
-## 📘 API Documentation (Swagger)
+## ⚡ Key Features
 
-Once the server is running, access Swagger UI at:
+### 🛡️ Security & Authentication
 
-```
-http://localhost:5000/api/v1/swagger
-```
+- JWT-based authentication with refresh token rotation
+- OTP verification for email/phone
+- Role-based access control (RBAC)
+- API key support for external integrations
+- Secure HTTP-only cookie storage
+- Rate limiting & throttling
 
----
+### 📦 Product Management
 
-## 📡 API Response Standard
+- Multi-tier product categorization
+- Generic & Brand management
+- Prescription-required products
+- Product variants (strength, dosage, pack size)
+- Inventory management with stock tracking
+- Product images & rich descriptions
+- Manufacturer management
+- Price history tracking
 
-All APIs follow a **consistent response format**:
+### 🛒 Shopping Experience
 
-### ✅ Success (Single Resource)
+- Advanced search with filters (by category, generic, brand, price)
+- Autocomplete suggestions
+- Shopping cart management
+- Wishlist functionality
+- Product recommendations
+- Similar products suggestion
+- Rating & review system
 
-```json
-{
-  "apiVersion": "0.1.1",
-  "success": true,
-  "message": "Item retrieved successfully",
-  "status": 200,
-  "data": {},
-  "links": {
-    "get": "/categories/:id",
-    "update": "/categories/:id",
-    "delete": "/categories/:id"
-  }
-}
-```
+### 📋 Order Management
 
-### ✅ Success (Paginated)
+- Complete order lifecycle tracking
+- Order status workflow (Pending → Confirmed → Processing → Shipped → Delivered)
+- Bulk order status updates
+- Real-time order tracking
+- Order timeline/history
+- Order cancellation with reason
 
-```json
-{
-  "apiVersion": "0.1.1",
-  "success": true,
-  "message": "Operation Successful",
-  "status": 200,
-  "meta": {
-    "total": 24,
-    "page": 1,
-    "limit": 10,
-    "totalPages": 3
-  },
-  "links": {
-    "first": "?page=1&limit=10",
-    "last": "?page=3&limit=10",
-    "current": "?page=1&limit=10",
-    "next": "?page=2&limit=10",
-    "previous": ""
-  },
-  "data": []
-}
-```
+### 💳 Payment Integration
 
-### ❌ No Content (DELETE – Industry Standard)
+- Multiple payment methods (SSLCommerz, BKash, Nagad, Rocket)
+- Payment status tracking
+- Refund processing
+- Payment reconciliation
+- Secure transaction logging
 
-```http
-HTTP/1.1 204 No Content
-```
+### 📝 Prescription Management
 
----
+- Prescription image upload
+- Prescription verification workflow
+- Admin approval/rejection system
+- Prescription history tracking
+- Compliance & audit trails
 
-## 🔐 Authentication
+### 📊 Analytics & Reporting
 
-- JWT-based authentication
-- Access token stored in **HTTP-only cookies**
-- Refresh token rotation supported
-- Logout clears cookies securely
+- Sales analytics dashboard
+- Product performance metrics
+- Customer behavior analytics
+- Order status statistics
+- Revenue reports
+- Inventory analytics
 
----
+### 🔄 Audit & Compliance
 
-## 🧹 Best Practices Followed
-
-- DTO-based validation
-- Soft delete instead of hard delete
-- Proper HTTP status codes
-- Centralized interceptor for responses
-- Clean separation of concerns
-- Reusable pagination & filtering logic
+- Comprehensive audit logging
+- User action tracking
+- Data modification history
+- System activity monitoring
+- GDPR/Data protection compliance
 
 ---
 
-## 🚢 Deployment
+## 🏆 Industry Standards Implemented
 
-NestJS is platform-agnostic and can be deployed to:
+### 1. **Security Standards**
 
-- AWS
-- DigitalOcean
-- Railway
-- Render
-- Docker
-- Kubernetes
+| Standard                 | Implementation                                             |
+| ------------------------ | ---------------------------------------------------------- |
+| **OWASP Top 10**         | Input validation, SQL injection prevention, XSS protection |
+| **JWT Security**         | Access/refresh token rotation, short-lived tokens          |
+| **GDPR Compliance**      | Data anonymization, deletion, audit trails                 |
+| **HIPAA Considerations** | Prescription data encryption, access controls              |
+| **PCI DSS**              | Payment data handling, secure payment gateways             |
 
-Build for production:
+### 2. **API Design Standards**
 
-```bash
-bun run build
-```
+| Standard        | Implementation                                  |
+| --------------- | ----------------------------------------------- |
+| **RESTful API** | Resource-based URLs, HTTP methods, status codes |
+| **OpenAPI 3.0** | Complete Swagger documentation                  |
+| **HATEOAS**     | Response links for resource navigation          |
+| **JSON:API**    | Consistent response format                      |
+| **Versioning**  | API version headers (v1, v2)                    |
+| **Pagination**  | Offset/limit pagination with metadata           |
+
+### 3. **Database Standards**
+
+| Standard              | Implementation                            |
+| --------------------- | ----------------------------------------- |
+| **3NF Normalization** | Normalized database schema                |
+| **ACID Compliance**   | Transaction support with rollback         |
+| **Indexing Strategy** | Optimized indexes for performance         |
+| **Soft Delete**       | `deleted_at` timestamp for data retention |
+| **Audit Trails**      | All data modifications logged             |
+
+### 4. **Code Quality Standards**
+
+| Standard              | Implementation                        |
+| --------------------- | ------------------------------------- |
+| **SOLID Principles**  | Clean, maintainable code architecture |
+| **Design Patterns**   | Repository, DTO, Factory, Singleton   |
+| **TypeScript Strict** | Strict type checking                  |
+| **ESLint/Prettier**   | Code formatting & linting             |
+| **Unit Testing**      | Jest testing framework                |
+
+### 5. **Performance Standards**
+
+| Standard                  | Implementation                       |
+| ------------------------- | ------------------------------------ |
+| **Caching Strategy**      | Redis caching for frequent queries   |
+| **Database Optimization** | Query optimization, batch processing |
+| **Lazy Loading**          | Optimized relationship loading       |
+| **Pagination**            | Avoid large data transfers           |
+| **Batch Operations**      | Bulk updates for performance         |
 
 ---
 
-## 📜 License
+## 🏗️ Technical Architecture
 
-This project is licensed under the **MIT License**.
+─────────────────────────────────────────────────────────────────┐
+│ CLIENT LAYER │
+│ (Web/Mobile Apps) │
+└─────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────┐
+│ API GATEWAY LAYER │
+│ (NestJS - JWT Auth, Rate Limiting) │
+└─────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────┐
+│ APPLICATION LAYER │
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│ │ Auth │ │ Orders │ │Products │ │ Users │ │
+│ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│ │ Payments │ │ Cart │ │ Reviews │ │ Coupons │ │
+│ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────┐
+│ SERVICE LAYER │
+│ ┌──────────────────────────────────────────────────────────┐ │
+│ │ Business Logic & Validation │ │
+│ └──────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────┐
+│ DATA ACCESS LAYER │
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│ │PostgreSQL│ │ Redis │ │ Search │ │ Queue │ │
+│ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
+└─────────────────────────────────────────────────────────────────┘
 
 ---
 
-## 👤 Author
+## 📦 Modules & Features
 
-Zamirul Kabir
-**Your Name**
-Software Engineer
-NestJS | TypeScript | REST APIs
+### ✅ Completed Modules
+
+| Module                      | Status      | Features                                  |
+| --------------------------- | ----------- | ----------------------------------------- |
+| **Authentication**          | ✅ Complete | JWT, OTP, RBAC, Password Recovery         |
+| **Users Management**        | ✅ Complete | CRUD, Profile Management, Role Assignment |
+| **Address Management**      | ✅ Complete | CRUD, Default Address                     |
+| **Category Management**     | ✅ Complete | Nested Categories, Tree Structure         |
+| **Generic Management**      | ✅ Complete | CRUD, Product Association                 |
+| **Brand Management**        | ✅ Complete | CRUD, Product Association                 |
+| **Manufacturer Management** | ✅ Complete | CRUD, Product Association                 |
+| **Product Management**      | ✅ Complete | CRUD, Variants, Images, Details           |
+| **Product Search**          | ✅ Complete | Advanced Filters, Autocomplete            |
+| **Product Variants**        | ✅ Complete | Price, Stock, SKU Management              |
+| **Product Images**          | ✅ Complete | Multiple Images, Sort Order               |
+| **Related Products**        | ✅ Complete | Similar Products, Suggestions             |
+| **Reviews & Ratings**       | ✅ Complete | CRUD, Approval, Helpful Count             |
+| **Cart Management**         | ✅ Complete | Add/Remove, Quantity Update               |
+| **Wishlist**                | ✅ Complete | Add/Remove Products                       |
+| **Order Management**        | ✅ Complete | CRUD, Status Tracking                     |
+| **Order Tracking**          | ✅ Complete | Status Timeline, History                  |
+| **Order Items**             | ✅ Complete | Snapshot Data                             |
+| **Payments**                | ✅ Complete | Payment Methods, Status                   |
+| **Coupon System**           | ✅ Complete | CRUD, Validation, Application             |
+| **Coupon Usage**            | ✅ Complete | Usage Tracking                            |
+| **Prescription Upload**     | ✅ Complete | Upload, Verification                      |
+| **Banner Management**       | ✅ Complete | CRUD, Positions                           |
+| **Audit Logs**              | ✅ Complete | Full Activity Tracking                    |
+| **Inventory Logs**          | ✅ Complete | Stock Movement Tracking                   |
+| **Shipping**                | ✅ Complete | Delivery Zones, Tracking                  |
 
 ---
 
-## 🤝 Contribution
+## 🗄️ Database Design
 
-Contributions, issues, and feature requests are welcome.
-Please follow clean code and commit conventions.
+### Core Tables
+
+Users & Authentication:
+├── users
+├── roles
+├── user_roles
+├── user_sessions
+└── password_resets
+
+Products & Catalog:
+├── products
+├── categories
+├── generics
+├── brands
+├── manufacturers
+├── product_variants
+├── product_images
+└── product_details
+
+Shopping & Cart:
+├── carts
+├── cart_items
+└── wishlists
+
+Orders & Transactions:
+├── orders
+├── order_items
+├── payments
+├── order_tracking
+└── shipping
+
+Marketing & Promotions:
+├── coupons
+├── coupon_usages
+└── banners
+
+Compliance & Audit:
+├── audit_logs
+├── inventory_logs
+└── prescriptions
+
+### ER Diagram (High Level)
 
 ---
 
-## ⭐ Support
+## 🔒 Security Implementation
 
-If you find this project helpful, consider giving it a ⭐ on GitHub.
+### Authentication Flow
+
+User Login → JWT Access/Refresh Tokens
+
+HTTP-Only Cookie Storage
+
+Token Validation on Each Request
+
+Automatic Refresh on Expiry
+
+Logout → Cookie Clearing
+
+### Authorization Flow
+
+Role-Based Access Control (RBAC)
+
+Permission-Based Access
+
+Resource Ownership Verification
+
+Admin Override Capability
+
+# Clone repository
+
+git clone https://github.com/yourusername/medico-backend.git
+cd medico-backend
+
+# Install dependencies
+
+npm install
+
+# Configure environment
+
+cp .env.example .env
+
+# Run migrations
+
+npm run migration:run
+
+# Start development server
+
+npm run start:dev
+
+# Run tests
+
+npm run test
+
+License
+This project is proprietary and confidential.
+
+Copyright © 2024 Medico. All rights reserved.
+
+Lead Developer Zamirul Kabir zamirulkabir999@gmail.com
