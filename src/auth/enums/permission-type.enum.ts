@@ -79,6 +79,16 @@ export enum Permission {
   BRAND_MANAGE = 'brand:*',
 
   /* =========================
+      ADDRESS Management
+   ========================= */
+
+  ADDRESS_CREATE = 'address:create',
+  ADDRESS_READ = 'address:read',
+  ADDRESS_UPDATE = 'address:update',
+  ADDRESS_DELETE = 'address:delete',
+  ADDRESS_MANAGE = 'address:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',

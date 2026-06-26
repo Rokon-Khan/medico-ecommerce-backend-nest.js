@@ -139,18 +139,8 @@ export class AddressResponseDto {
   })
   user?: {
     id: string;
-    name: string;
+    name?: string;
     email?: string;
-  };
-
-  @ApiProperty({
-    description: 'Created By',
-    required: false,
-    type: Object,
-  })
-  addedBy?: {
-    id: string;
-    name: string;
   };
 
   @ApiProperty()

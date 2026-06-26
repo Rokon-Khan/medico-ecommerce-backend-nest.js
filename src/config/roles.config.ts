@@ -45,34 +45,12 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.BRAND_MANAGE,
 
     Permission.PRODUCT_VARIANT_CREATE,
-
     Permission.PRODUCT_VARIANT_UPDATE,
     Permission.PRODUCT_VARIANT_DELETE,
     Permission.PRODUCT_VARIANT_MANAGE,
 
-    Permission.WHY_CHOOSE_US_CREATE,
-    Permission.WHY_CHOOSE_US_READ,
-    Permission.WHY_CHOOSE_US_UPDATE,
-    Permission.WHY_CHOOSE_US_DELETE,
-    Permission.WHY_CHOOSE_US_MANAGE,
-
-    Permission.PRICINGS_CREATE,
-    Permission.PRICINGS_READ,
-    Permission.PRICINGS_UPDATE,
-    Permission.PRICINGS_DELETE,
-    Permission.PRICINGS_MANAGE,
-
-    Permission.PRICING_CATEGORY_CREATE,
-    Permission.PRICING_CATEGORY_READ,
-    Permission.PRICING_CATEGORY_UPDATE,
-    Permission.PRICING_CATEGORY_DELETE,
-    Permission.PRICING_CATEGORY_MANAGE,
-
-    Permission.PRICING_FEATURE_CREATE,
-    Permission.PRICING_FEATURE_READ,
-    Permission.PRICING_FEATURE_UPDATE,
-    Permission.PRICING_FEATURE_DELETE,
-    Permission.PRICING_FEATURE_MANAGE,
+    Permission.ADDRESS_DELETE,
+    Permission.ADDRESS_MANAGE,
 
     Permission.HEROES_CREATE,
     Permission.HEROES_READ,
@@ -102,30 +80,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.SYSTEM_READ,
     Permission.SYSTEM_UPDATE,
     Permission.BULK_OPERATION,
-
-    Permission.QUESTION_ANSWER_CREATE,
-    Permission.QUESTION_ANSWER_READ,
-    Permission.QUESTION_ANSWER_UPDATE,
-    Permission.QUESTION_ANSWER_DELETE,
-    Permission.QUESTION_ANSWER_MANAGE,
-
-    Permission.TEAM_CREATE,
-    Permission.TEAM_READ,
-    Permission.TEAM_UPDATE,
-    Permission.TEAM_DELETE,
-    Permission.TEAM_MANAGE,
-
-    Permission.WHO_WE_ARE_CREATE,
-    Permission.WHO_WE_ARE_READ,
-    Permission.WHO_WE_ARE_UPDATE,
-    Permission.WHO_WE_ARE_DELETE,
-    Permission.WHO_WE_ARE_MANAGE,
-
-    Permission.WHO_WE_ARE_FEATURE_CREATE,
-    Permission.WHO_WE_ARE_FEATURE_READ,
-    Permission.WHO_WE_ARE_FEATURE_UPDATE,
-    Permission.WHO_WE_ARE_FEATURE_DELETE,
-    Permission.WHO_WE_ARE_FEATURE_MANAGE,
   ],
 
   [Role.MANAGER]: [
@@ -156,5 +110,9 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.BRAND_READ,
     Permission.PRODUCT_VARIANT_READ,
     Permission.RELATED_PRODUCT_READ,
+
+    Permission.ADDRESS_CREATE,
+    Permission.ADDRESS_READ,
+    Permission.ADDRESS_UPDATE,
   ],
 };
