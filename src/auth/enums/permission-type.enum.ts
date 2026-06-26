@@ -89,6 +89,16 @@ export enum Permission {
   ADDRESS_MANAGE = 'address:*',
 
   /* =========================
+      CART Management
+========================= */
+
+  CART_CREATE = 'cart:create',
+  CART_READ = 'cart:read',
+  CART_UPDATE = 'cart:update',
+  CART_DELETE = 'cart:delete',
+  CART_MANAGE = 'cart:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',

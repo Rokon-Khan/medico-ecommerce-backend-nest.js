@@ -30,6 +30,7 @@ import { ProductDetailsModule } from './modules/product-details/product-details.
 import { ProductVariantsModule } from './modules/product-variants/product-variants.module';
 import { RelatedProductsModule } from './modules/related-products/related-products.module';
 import { AddressModule } from './modules/address/address.module';
+import { CartsModule } from './modules/carts/carts.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -87,6 +88,7 @@ const ENV = process.env.NODE_ENV;
     ProductVariantsModule,
     RelatedProductsModule,
     AddressModule,
+    CartsModule,
   ],
 
   controllers: [AppController],
