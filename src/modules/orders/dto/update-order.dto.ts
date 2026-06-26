@@ -1,4 +1,34 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateOrderDto } from './create-order.dto';
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsEnum, IsOptional, IsString } from 'class-validator';
 
-export class UpdateOrderDto extends PartialType(CreateOrderDto) {}
+export enum OrderStatus {
+  PENDING = 'pending',
+  CONFIRMED = 'confirmed',
+  PROCESSING = 'processing',
+  SHIPPED = 'shipped',
+  DELIVERED = 'delivered',
+  CANCELLED = 'cancelled',
+}
+
+export enum PaymentStatus {
+  PENDING = 'pending',
+  PAID = 'paid',
+  FAILED = 'failed',
+}
+
+export class UpdateOrderDto {
+  @ApiPropertyOptional({ enum: OrderStatus })
+  @IsOptional()
+  @IsEnum(OrderStatus)
+  order_status?: OrderStatus;
+
+  @ApiPropertyOptional({ enum: PaymentStatus })
+  @IsOptional()
+  @IsEnum(PaymentStatus)
+  payment_status?: PaymentStatus;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  notes?: string;
+}

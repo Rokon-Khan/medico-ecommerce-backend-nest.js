@@ -1,13 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsBoolean,
-  IsEnum,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  IsUUID,
-  IsNumber,
-} from 'class-validator';
+import { IsOptional, IsString, IsUUID, IsEnum } from 'class-validator';
+
+/**
+ * PAYMENT METHOD ENUM (BEST PRACTICE)
+ */
+export enum PaymentMethod {
+  COD = 'COD',
+  BKASH = 'BKASH',
+  NAGAD = 'NAGAD',
+  SSLCOMMERZ = 'SSLCOMMERZ',
+}
 
 export class CreateOrderDto {
   @ApiProperty({
@@ -23,6 +25,14 @@ export class CreateOrderDto {
   @IsOptional()
   @IsString()
   notes?: string;
+
+  // 💳 PAYMENT METHOD (NEW ADDITION)
+  @ApiProperty({
+    example: PaymentMethod.COD,
+    enum: PaymentMethod,
+  })
+  @IsEnum(PaymentMethod)
+  payment_method: PaymentMethod;
 }
 
 export class OrderResponseDto {
@@ -55,6 +65,12 @@ export class OrderResponseDto {
 
   @ApiProperty()
   order_status: string;
+
+  // 💳 NEW FIELD (IMPORTANT FOR TRACKING)
+  @ApiProperty({
+    example: 'COD',
+  })
+  payment_method: string;
 
   @ApiProperty({ required: false })
   notes?: string;
