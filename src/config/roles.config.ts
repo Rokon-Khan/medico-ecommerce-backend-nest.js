@@ -126,5 +126,11 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.CART_ITEM_UPDATE,
     Permission.CART_ITEM_DELETE,
     Permission.CART_ITEM_MANAGE,
+
+    Permission.WISHLIST_CREATE,
+    Permission.WISHLIST_READ,
+    Permission.WISHLIST_UPDATE,
+    Permission.WISHLIST_DELETE,
+    Permission.WISHLIST_MANAGE,
   ],
 };

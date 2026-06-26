@@ -23,7 +23,7 @@
 //   sumFields?: Array<keyof T>;
 // }
 
-import { ObjectLiteral, Repository } from 'typeorm';
+import { FindOptionsWhere, ObjectLiteral, Repository } from 'typeorm';
 import { PaginationQueryDto } from './dto/data-query.dto';
 
 export interface DataQueryOptions<T extends ObjectLiteral> {
@@ -32,8 +32,8 @@ export interface DataQueryOptions<T extends ObjectLiteral> {
 
   pagination: PaginationQueryDto;
 
-  /** 
-   * Searchable fields can include nested relations like 'service.name' 
+  /**
+   * Searchable fields can include nested relations like 'service.name'
    */
   searchableFields?: string[];
 
@@ -51,5 +51,6 @@ export interface DataQueryOptions<T extends ObjectLiteral> {
 
   /** Numeric fields only, for sum/aggregate calculations */
   sumFields?: Array<keyof T>;
-}
 
+  where?: FindOptionsWhere<T>;
+}

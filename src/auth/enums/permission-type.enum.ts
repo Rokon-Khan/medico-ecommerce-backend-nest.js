@@ -109,6 +109,16 @@ export enum Permission {
   CART_ITEM_MANAGE = 'cart_item:*',
 
   /* =========================
+      WISHLIST Management
+   ========================= */
+
+  WISHLIST_CREATE = 'wishlist:create',
+  WISHLIST_READ = 'wishlist:read',
+  WISHLIST_UPDATE = 'wishlist:update',
+  WISHLIST_DELETE = 'wishlist:delete',
+  WISHLIST_MANAGE = 'wishlist:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',
