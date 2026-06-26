@@ -34,6 +34,7 @@ import { CartsModule } from './modules/carts/carts.module';
 import { CartItemsModule } from './modules/cart-items/cart-items.module';
 import { WishlistsModule } from './modules/wishlists/wishlists.module';
 import { OrdersModule } from './modules/orders/orders.module';
+import { OrderItemsModule } from './modules/order-items/order-items.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -95,6 +96,7 @@ const ENV = process.env.NODE_ENV;
     CartItemsModule,
     WishlistsModule,
     OrdersModule,
+    OrderItemsModule,
   ],
 
   controllers: [AppController],

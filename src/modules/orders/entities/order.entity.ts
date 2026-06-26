@@ -7,10 +7,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Index,
+  OneToMany,
 } from 'typeorm';
 
 import { User } from 'src/modules/users/entities/user.entity';
 import { Address } from 'src/modules/address/entities/address.entity';
+import { OrderItem } from 'src/modules/order-items/entities/order-item.entity';
 
 @Entity('orders')
 @Index('IDX_ORDER_USER', ['user_id'])
@@ -84,6 +86,9 @@ export class Order {
 
   @Column({ type: 'varchar', length: 50, default: 'pending' })
   order_status: string;
+
+  @OneToMany(() => OrderItem, (item) => item.order)
+  items: OrderItem[];
 
   /* =========================
             Notes
