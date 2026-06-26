@@ -43,6 +43,7 @@ import { CouponUsagesModule } from './modules/coupon-usages/coupon-usages.module
 import { PrescriptionsModule } from './modules/prescriptions/prescriptions.module';
 import { BannersModule } from './modules/banners/banners.module';
 import { AuditLogsModule } from './modules/audit-logs/audit-logs.module';
+import { OrderTrackingModule } from './modules/order-tracking/order-tracking.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -113,6 +114,7 @@ const ENV = process.env.NODE_ENV;
     PrescriptionsModule,
     BannersModule,
     AuditLogsModule,
+    OrderTrackingModule,
   ],
 
   controllers: [AppController],

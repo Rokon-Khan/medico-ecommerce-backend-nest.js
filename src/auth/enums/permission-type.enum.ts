@@ -171,6 +171,12 @@ export enum Permission {
   ORDER_UPDATE = 'order:update',
   ORDER_DELETE = 'order:delete',
 
+  // ==================== ORDER TRACKING PERMISSIONS ====================
+  ORDER_TRACKING_READ = 'order-tracking:read',
+  ORDER_TRACKING_UPDATE = 'order-tracking:update',
+  ORDER_TRACKING_BULK_UPDATE = 'order-tracking:bulk-update',
+  ORDER_TRACKING_MANAGE = 'order-tracking:manage',
+
   PAYMENT_CREATE = 'payment:create',
   PAYMENT_READ = 'payment:read',
   PAYMENT_UPDATE = 'payment:update',
