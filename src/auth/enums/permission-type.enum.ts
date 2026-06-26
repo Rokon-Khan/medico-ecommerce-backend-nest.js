@@ -133,6 +133,18 @@ export enum Permission {
 
   REVIEW_MANAGE = 'review:manage',
 
+  //   prescription
+
+  PRESCRIPTION_CREATE = 'prescription:create',
+  PRESCRIPTION_READ = 'prescription:read',
+  PRESCRIPTION_UPDATE = 'prescription:update',
+  PRESCRIPTION_DELETE = 'prescription:delete',
+
+  PRESCRIPTION_APPROVE = 'prescription:approve',
+  PRESCRIPTION_REJECT = 'prescription:reject',
+
+  PRESCRIPTION_MANAGE = 'prescription:manage',
+
   /* =========================
      Profile
   ========================= */
