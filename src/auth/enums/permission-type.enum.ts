@@ -99,6 +99,16 @@ export enum Permission {
   CART_MANAGE = 'cart:*',
 
   /* =========================
+      CART_ITEM Management
+   ========================= */
+
+  CART_ITEM_CREATE = 'cart_item:create',
+  CART_ITEM_READ = 'cart_item:read',
+  CART_ITEM_UPDATE = 'cart_item:update',
+  CART_ITEM_DELETE = 'cart_item:delete',
+  CART_ITEM_MANAGE = 'cart_item:*',
+
+  /* =========================
        Our Work Process Management
    ========================= */
   OUR_WORK_PROCESSES_CREATE = 'our-work-processes:create',
