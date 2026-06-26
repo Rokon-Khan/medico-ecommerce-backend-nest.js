@@ -81,6 +81,11 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
 
     Permission.ORDER_READ,
     Permission.ORDER_UPDATE,
+
+    Permission.REVIEW_APPROVE,
+    Permission.REVIEW_REJECT,
+
+    Permission.REVIEW_MANAGE,
   ],
 
   [Role.PREMIUM_USER]: [Permission.PROFILE_READ, Permission.PROFILE_UPDATE],
@@ -118,5 +123,10 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.WISHLIST_UPDATE,
     Permission.WISHLIST_DELETE,
     Permission.WISHLIST_MANAGE,
+
+    Permission.REVIEW_CREATE,
+    Permission.REVIEW_READ,
+    Permission.REVIEW_UPDATE,
+    Permission.REVIEW_DELETE,
   ],
 };

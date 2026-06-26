@@ -123,6 +123,16 @@ export enum Permission {
   INVENTORY_LOG_UPDATE = 'inventory_log:update',
   INVENTORY_LOG_DELETE = 'inventory_log:delete',
 
+  REVIEW_CREATE = 'review:create',
+  REVIEW_READ = 'review:read',
+  REVIEW_UPDATE = 'review:update',
+  REVIEW_DELETE = 'review:delete',
+
+  REVIEW_APPROVE = 'review:approve',
+  REVIEW_REJECT = 'review:reject',
+
+  REVIEW_MANAGE = 'review:manage',
+
   /* =========================
      Profile
   ========================= */
