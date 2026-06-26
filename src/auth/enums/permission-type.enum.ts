@@ -152,6 +152,14 @@ export enum Permission {
   PAYMENT_UPDATE = 'payment:update',
   PAYMENT_DELETE = 'payment:delete',
 
+  COUPON_CREATE = 'coupon:create',
+  COUPON_READ = 'coupon:read',
+  COUPON_APPLY = 'coupon:apply',
+  COUPON_UPDATE = 'coupon:update',
+  COUPON_DELETE = 'coupon:delete',
+  COUPON_MANAGE = 'coupon:manage',
+  COUPON_USAGE_READ = 'coupon-usage:read',
+
   /* =========================
      Settings
   ========================= */

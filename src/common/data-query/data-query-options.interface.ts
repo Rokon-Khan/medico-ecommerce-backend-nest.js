@@ -1,28 +1,3 @@
-// import { ObjectLiteral, Repository } from 'typeorm';
-// import { PaginationQueryDto } from './dto/data-query.dto';
-
-// export interface DataQueryOptions<T extends ObjectLiteral> {
-//   repository: Repository<T>;
-//   alias?: string;
-
-//   pagination: PaginationQueryDto;
-
-//   searchableFields?: Array<keyof T>;
-//   filterableFields?: Array<keyof T>;
-
-//   relations?: string[];
-
-//   /**
-//    * Entity fields only (TYPE SAFE)
-//    */
-//   select?: Array<keyof T>;
-
-//   /**
-//    * Numeric fields only
-//    */
-//   sumFields?: Array<keyof T>;
-// }
-
 import { FindOptionsWhere, ObjectLiteral, Repository } from 'typeorm';
 import { PaginationQueryDto } from './dto/data-query.dto';
 
@@ -53,4 +28,10 @@ export interface DataQueryOptions<T extends ObjectLiteral> {
   sumFields?: Array<keyof T>;
 
   where?: FindOptionsWhere<T>;
+
+  filters?: FindOptionsWhere<T>;
+
+  additionalWhere?: string;
+
+  parameters?: Record<string, any>;
 }

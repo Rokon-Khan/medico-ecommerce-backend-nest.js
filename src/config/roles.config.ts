@@ -73,6 +73,13 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.SYSTEM_READ,
     Permission.SYSTEM_UPDATE,
     Permission.BULK_OPERATION,
+
+    Permission.COUPON_CREATE,
+    Permission.COUPON_READ,
+    Permission.COUPON_UPDATE,
+    Permission.COUPON_DELETE,
+    Permission.COUPON_MANAGE,
+    Permission.COUPON_USAGE_READ,
   ],
 
   [Role.MANAGER]: [
@@ -128,5 +135,7 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.REVIEW_READ,
     Permission.REVIEW_UPDATE,
     Permission.REVIEW_DELETE,
+
+    Permission.COUPON_APPLY,
   ],
 };

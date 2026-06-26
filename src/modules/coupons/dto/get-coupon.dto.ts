@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
-import { DiscountType } from './create-coupon.dto';
+import { DiscountType } from '../entities/coupon.entity';
 
 export class GetCouponDto {
   @ApiPropertyOptional()
