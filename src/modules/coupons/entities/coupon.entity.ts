@@ -141,10 +141,10 @@ export class Coupon {
   is_combinable: boolean;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
+
   @ManyToOne(() => User, {
     nullable: false,
     onDelete: 'RESTRICT',

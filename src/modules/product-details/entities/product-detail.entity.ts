@@ -66,10 +66,10 @@ export class ProductDetail {
   storage?: string;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
+
   @ManyToOne(() => User, {
     nullable: false,
     onDelete: 'RESTRICT',

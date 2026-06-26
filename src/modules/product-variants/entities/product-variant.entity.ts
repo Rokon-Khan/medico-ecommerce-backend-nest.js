@@ -97,8 +97,7 @@ export class ProductVariant {
   product: Product;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
 

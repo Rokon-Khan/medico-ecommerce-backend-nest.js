@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('product_categories') 
+@Entity('product_categories')
 @Index('IDX_PRODUCT_CATEGORIES_NAME', ['name'])
 export class ProductCategory {
   @PrimaryGeneratedColumn('uuid')
@@ -22,7 +22,9 @@ export class ProductCategory {
   @Column({ type: 'varchar', nullable: true })
   image?: string;
 
-  @Column({ type: 'bigint', nullable: false })
+  @Column({
+    type: 'uuid',
+  })
   added_by: string;
 
   @ManyToOne(() => User, { nullable: false, onDelete: 'RESTRICT' })
@@ -34,5 +36,4 @@ export class ProductCategory {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-
 }

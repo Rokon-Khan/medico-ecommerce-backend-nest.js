@@ -24,8 +24,7 @@ export class Brand {
   name: string;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
 

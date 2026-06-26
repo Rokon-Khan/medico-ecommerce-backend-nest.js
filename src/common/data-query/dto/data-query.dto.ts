@@ -16,4 +16,12 @@ export class PaginationQueryDto {
   @IsOptional()
   @IsObject()
   filters?: Record<string, any>;
+
+  @IsOptional()
+  @IsString()
+  sort_by?: string = 'created_at';
+
+  @IsOptional()
+  @IsString()
+  sort_order?: string = 'created_at';
 }

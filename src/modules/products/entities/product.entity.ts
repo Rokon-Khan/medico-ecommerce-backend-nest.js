@@ -92,10 +92,10 @@ export class Product {
   brand: Brand;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
+
   @ManyToOne(() => User, {
     nullable: false,
     onDelete: 'RESTRICT',

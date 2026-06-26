@@ -30,8 +30,7 @@ export class Generic {
   description?: string;
 
   @Column({
-    type: 'bigint',
-    nullable: false,
+    type: 'uuid',
   })
   added_by: string;
 

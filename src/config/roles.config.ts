@@ -81,8 +81,12 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.COUPON_MANAGE,
     Permission.COUPON_USAGE_READ,
 
-    Permission.PRESCRIPTION_UPDATE,
-    Permission.PRESCRIPTION_DELETE,
+    // ADMIN
+    Permission.AUDIT_LOG_CREATE,
+    Permission.AUDIT_LOG_READ,
+    Permission.AUDIT_LOG_UPDATE,
+    Permission.AUDIT_LOG_DELETE,
+    Permission.AUDIT_LOG_MANAGE,
   ],
 
   [Role.MANAGER]: [
@@ -100,6 +104,11 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRESCRIPTION_APPROVE,
     Permission.PRESCRIPTION_REJECT,
     Permission.PRESCRIPTION_MANAGE,
+
+    Permission.BANNER_CREATE,
+    Permission.BANNER_UPDATE,
+    Permission.BANNER_DELETE,
+    Permission.BANNER_MANAGE,
   ],
 
   [Role.PREMIUM_USER]: [Permission.PROFILE_READ, Permission.PROFILE_UPDATE],
@@ -147,5 +156,9 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
 
     Permission.PRESCRIPTION_CREATE,
     Permission.PRESCRIPTION_READ,
+    Permission.PRESCRIPTION_UPDATE,
+    Permission.PRESCRIPTION_DELETE,
+
+    Permission.BANNER_READ,
   ],
 };

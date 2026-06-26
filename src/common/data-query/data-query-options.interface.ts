@@ -4,34 +4,16 @@ import { PaginationQueryDto } from './dto/data-query.dto';
 export interface DataQueryOptions<T extends ObjectLiteral> {
   repository: Repository<T>;
   alias?: string;
-
   pagination: PaginationQueryDto;
-
-  /**
-   * Searchable fields can include nested relations like 'service.name'
-   */
   searchableFields?: string[];
-
-  /** Fields that can be filtered (exact match) */
   filterableFields?: Array<keyof T>;
-
-  /** Relations to join (eager loading) */
   relations?: string[];
-
-  /** Top-level scalar fields only (TYPE SAFE) */
   select?: Array<keyof T>;
-
-  /** Fields from relations (nested selects) */
   selectRelations?: string[];
-
-  /** Numeric fields only, for sum/aggregate calculations */
   sumFields?: Array<keyof T>;
-
   where?: FindOptionsWhere<T>;
-
   filters?: FindOptionsWhere<T>;
-
-  additionalWhere?: string;
-
   parameters?: Record<string, any>;
+  orderBy?: Record<string, 'ASC' | 'DESC'>;
+  additionalWhere?: string;
 }

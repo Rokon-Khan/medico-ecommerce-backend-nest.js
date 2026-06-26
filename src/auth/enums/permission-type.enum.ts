@@ -145,6 +145,18 @@ export enum Permission {
 
   PRESCRIPTION_MANAGE = 'prescription:manage',
 
+  BANNER_CREATE = 'banner:create',
+  BANNER_READ = 'banner:read',
+  BANNER_UPDATE = 'banner:update',
+  BANNER_DELETE = 'banner:delete',
+  BANNER_MANAGE = 'banner:manage',
+
+  AUDIT_LOG_CREATE = 'audit_log:create',
+  AUDIT_LOG_READ = 'audit_log:read',
+  AUDIT_LOG_UPDATE = 'audit_log:update',
+  AUDIT_LOG_DELETE = 'audit_log:delete',
+  AUDIT_LOG_MANAGE = 'audit_log:manage',
+
   /* =========================
      Profile
   ========================= */
