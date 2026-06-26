@@ -245,6 +245,7 @@ export enum Permission {
   ORDER_UPDATE = 'order:update',
   ORDER_DELETE = 'order:delete',
 
+  PAYMENT_CREATE = 'payment:create',
   PAYMENT_READ = 'payment:read',
   PAYMENT_UPDATE = 'payment:update',
   PAYMENT_DELETE = 'payment:delete',
