@@ -38,6 +38,7 @@ import { OrderItemsModule } from './modules/order-items/order-items.module';
 import { PaymentsModule } from './modules/payments/payments.module';
 import { InventoryLogsModule } from './modules/inventory-logs/inventory-logs.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
+import { CouponsModule } from './modules/coupons/coupons.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -103,6 +104,7 @@ const ENV = process.env.NODE_ENV;
     PaymentsModule,
     InventoryLogsModule,
     ReviewsModule,
+    CouponsModule,
   ],
 
   controllers: [AppController],

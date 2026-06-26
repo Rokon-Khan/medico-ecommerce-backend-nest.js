@@ -81,7 +81,6 @@ export class ReviewsService {
  
    */
   async findAll(req: Request, query: any): Promise<IPagination<Review>> {
-    // ফিল্টার তৈরি
     const filters: any = {};
 
     if (query.product_id) {
@@ -104,7 +103,7 @@ export class ReviewsService {
       repository: this.reviewRepo,
       alias: 'review',
       pagination: query,
-      where: filters, // 👈 Passed to DataQueryOptions.where
+      where: filters,
       searchableFields: ['comment', 'user.name', 'user.email'],
       select: ['id', 'rating', 'comment', 'is_approved', 'created_at'],
       relations: ['user', 'product'],
