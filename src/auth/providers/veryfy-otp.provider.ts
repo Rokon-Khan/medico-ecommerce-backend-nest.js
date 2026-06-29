@@ -73,7 +73,7 @@ export class VerifyOTPProvider {
 
     await this.mailService.sendWelcomeMail(user, tempPassword);
 
-    // 7️⃣ Generate tokens
+    //  Generate tokens
     const tokens = await this.generateTokensProvider.generateTokens(user);
     return {
       ...tokens,

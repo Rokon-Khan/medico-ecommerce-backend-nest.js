@@ -20,8 +20,8 @@
 </p>
 
 <p align="center">
-  <strong>🔗 Live API:</strong> <a href="#">https://api.medico.com/api/v1</a><br/>
-  <strong>📘 Swagger Docs:</strong> <a href="#">https://api.medico.com/api/v1/swagger</a>
+  <strong>🔗 Live API:</strong> <a href="#">https://medico-e-commerce-backend-nest-js.onrender.com/api/v1</a><br/>
+  <strong>📘 Swagger Docs:</strong> <a href="#">https://medico-e-commerce-backend-nest-js.onrender.com/api/v1/swagger</a>
 </p>
 
 ---
@@ -381,30 +381,41 @@ Resource Ownership Verification
 
 Admin Override Capability
 
-# Clone repository
+- `Clone the Repository:`
+
+```js
 
 git clone https://github.com/yourusername/medico-backend.git
-cd medico-backend
 
-# Install dependencies
+
+```
+
+- `Navigate to Project Directory:`
+
+```js
+cd medico-backend
+```
+
+- `Create a .env.example .env .env.development file in the root folder of the frontend project.`
+- `Add the following environment variable`
+
+```js
+ NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
+```
+
+- `Install Dependencies::`
+
+```js
 
 npm install
+```
 
-# Configure environment
+- `Start Development Server:`
 
-cp .env.example .env
-
-# Run migrations
-
-npm run migration:run
-
-# Start development server
+```js
 
 npm run start:dev
-
-# Run tests
-
-npm run test
+```
 
 License
 This project is proprietary and confidential.
