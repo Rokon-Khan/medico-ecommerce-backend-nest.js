@@ -38,7 +38,7 @@ export class BrandsController {
   @RequirePermissions(Permission.BRAND_CREATE)
   @UseGuards(JwtOrApiKeyGuard, PermissionsGuard)
   @Throttle({ default: { limit: 20, ttl: 180 } })
-  @Post('create')
+  @Post()
   create(@Req() req: Request, @Body() createBrandDto: CreateBrandDto) {
     return this.brandsService.create(req, createBrandDto);
   }

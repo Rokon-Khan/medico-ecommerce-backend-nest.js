@@ -37,7 +37,7 @@ export class UsersController {
     response: UserResponseDto,
     status: HttpStatus.OK,
   })
-  @Post('create-user')
+  @Post('sign-up')
   async create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.createUser(createUserDto);
   }

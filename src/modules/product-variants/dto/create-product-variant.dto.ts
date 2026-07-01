@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsBoolean,
+  IsDate,
   IsDateString,
   IsNotEmpty,
   IsNumber,
@@ -9,6 +10,7 @@ import {
   IsUUID,
   Min,
 } from 'class-validator';
+import { Transform, Type } from 'class-transformer';
 
 export class CreateProductVariantDto {
   @ApiProperty({
@@ -75,7 +77,8 @@ export class CreateProductVariantDto {
     required: false,
   })
   @IsOptional()
-  @IsDateString()
+  @Type(() => Date)
+  @IsDate()
   expiry_date?: Date;
 
   @ApiProperty({
@@ -84,7 +87,6 @@ export class CreateProductVariantDto {
   @IsBoolean()
   is_active: boolean;
 }
-
 export class ProductVariantResponseDto {
   @ApiProperty({
     description: 'Product Variant UUID',

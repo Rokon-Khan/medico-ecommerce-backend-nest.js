@@ -43,8 +43,8 @@ export class ProductVariantsController {
   })
   @RequirePermissions(Permission.PRODUCT_VARIANT_CREATE)
   @UseGuards(JwtOrApiKeyGuard, PermissionsGuard)
-  @Throttle({ default: { limit: 20, ttl: 180 } })
-  @Post('create')
+  // @Throttle({ default: { limit: 20, ttl: 180 } })
+  @Post()
   create(
     @Req() req: Request,
     @Body() createProductVariantDto: CreateProductVariantDto,

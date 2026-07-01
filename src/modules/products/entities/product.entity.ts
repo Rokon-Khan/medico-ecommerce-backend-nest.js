@@ -1,6 +1,7 @@
 import { Brand } from 'src/modules/brands/entities/brand.entity';
 import { Generic } from 'src/modules/generics/entities/generic.entity';
 import { ProductCategory } from 'src/modules/product-category/entities/product-category.entity';
+import { ProductVariant } from 'src/modules/product-variants/entities/product-variant.entity';
 import { User } from 'src/modules/users/entities/user.entity';
 
 import {
@@ -10,6 +11,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -102,6 +104,9 @@ export class Product {
   })
   @JoinColumn({ name: 'added_by' })
   addedBy: User;
+
+  @OneToMany(() => ProductVariant, (variant) => variant.product)
+  variants: ProductVariant[];
 
   @Column({
     type: 'varchar',

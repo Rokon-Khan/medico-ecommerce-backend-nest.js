@@ -79,41 +79,102 @@ export class ProductsService {
     return this.productRepo.save(product);
   }
 
-  async findAll(query: any): Promise<IPagination<Product>> {
-    return this.dataQueryService.execute<Product>({
+  // Change IPagination<Product> to IPagination<any> or your custom response interface
+  async findAll(query: any): Promise<IPagination<any>> {
+    const paginatedResult = await this.dataQueryService.execute<Product>({
       repository: this.productRepo,
       alias: 'product',
       pagination: query,
-
       searchableFields: ['name', 'slug', 'manufacturer'],
-
-      select: [
-        'id',
-        'name',
-        'slug',
-        'thumbnail',
-        'manufacturer',
-        'is_active',
-        'is_prescription_required',
-        'created_at',
-        'updated_at',
-      ],
+      relations: ['variants', 'category', 'brand'],
     });
+
+    // Typecast or map the inner data safely
+    const mappedData = paginatedResult.data.map((product) => {
+      const activeVariants = product.variants?.filter((v) => v.is_active) || [];
+
+      const prices = activeVariants.map((v) => Number(v.price));
+      const minPrice = prices.length ? Math.min(...prices) : 0;
+      const maxPrice = prices.length ? Math.max(...prices) : 0;
+
+      const discountPrices = activeVariants.map((v) =>
+        Number(v.discount_price || v.price),
+      );
+      const minDiscount = discountPrices.length
+        ? Math.min(...discountPrices)
+        : 0;
+      const maxDiscount = discountPrices.length
+        ? Math.max(...discountPrices)
+        : 0;
+
+      return {
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        thumbnail: product.thumbnail,
+        manufacturer: product.manufacturer,
+        is_prescription_required: product.is_prescription_required,
+        is_active: product.is_active,
+        category: product.category
+          ? { id: product.category.id, name: product.category.name }
+          : null,
+        brand: product.brand
+          ? { id: product.brand.id, name: product.brand.name }
+          : null,
+        variants: activeVariants.map((v) => ({
+          id: v.id,
+          strength: v.strength,
+          pack_size: v.pack_size,
+          sku: v.sku,
+          price: Number(v.price),
+          discount_price: v.discount_price ? Number(v.discount_price) : null,
+          stock: v.stock,
+          weight: v.weight ? Number(v.weight) : null,
+          expiry_date: v.expiry_date,
+          is_active: v.is_active,
+        })),
+        price_range: { min: minPrice, max: maxPrice },
+        discount_range: { min: minDiscount, max: maxDiscount },
+        created_at: product.created_at,
+        updated_at: product.updated_at,
+      };
+    });
+
+    // Return a new combined object instead of modifying paginatedResult.data directly
+    // if your dataQueryService has strict internal mutations.
+    return {
+      ...paginatedResult,
+      data: mappedData,
+    };
   }
 
-  async findOne(id: string): Promise<ProductResponseDto> {
+  async findOne(id: string): Promise<any> {
+    // Or update your ProductResponseDto type definition
     const product = await this.productRepo.findOne({
       where: { id },
-      relations: ['category', 'generic', 'brand', 'addedBy'],
+      relations: ['category', 'generic', 'brand', 'addedBy', 'variants'],
     });
 
     if (!product) {
       throw new NotFoundException('Product not found.');
     }
 
+    const activeVariants = product.variants?.filter((v) => v.is_active) || [];
+
+    // Calculate price range
+    const prices = activeVariants.map((v) => Number(v.price));
+    const minPrice = prices.length ? Math.min(...prices) : 0;
+    const maxPrice = prices.length ? Math.max(...prices) : 0;
+
+    // Calculate discount range
+    const discountPrices = activeVariants.map((v) =>
+      Number(v.discount_price || v.price),
+    );
+    const minDiscount = discountPrices.length ? Math.min(...discountPrices) : 0;
+    const maxDiscount = discountPrices.length ? Math.max(...discountPrices) : 0;
+
     return {
       id: product.id,
-
       category_id: product.category_id,
       generic_id: product.generic_id,
       brand_id: product.brand_id,
@@ -129,31 +190,41 @@ export class ProductsService {
       meta_description: product.meta_description,
 
       category: product.category
-        ? {
-            id: product.category.id,
-            name: product.category.name,
-          }
+        ? { id: product.category.id, name: product.category.name }
         : undefined,
 
       generic: product.generic
-        ? {
-            id: product.generic.id,
-            name: product.generic.name,
-          }
+        ? { id: product.generic.id, name: product.generic.name }
         : undefined,
 
       brand: product.brand
-        ? {
-            id: product.brand.id,
-            name: product.brand.name,
-          }
+        ? { id: product.brand.id, name: product.brand.name }
         : undefined,
 
+      variants: activeVariants.map((v) => ({
+        id: v.id,
+        strength: v.strength,
+        pack_size: v.pack_size,
+        sku: v.sku,
+        price: Number(v.price),
+        discount_price: v.discount_price ? Number(v.discount_price) : null,
+        stock: v.stock,
+        weight: v.weight ? Number(v.weight) : null,
+        expiry_date: v.expiry_date,
+        is_active: v.is_active,
+      })),
+
+      price_range: {
+        min: minPrice,
+        max: maxPrice,
+      },
+      discount_range: {
+        min: minDiscount,
+        max: maxDiscount,
+      },
+
       addedBy: product.addedBy
-        ? {
-            id: product.addedBy.id,
-            name: product.addedBy.name,
-          }
+        ? { id: product.addedBy.id, name: product.addedBy.name }
         : undefined,
 
       created_at: product.created_at,
@@ -227,6 +298,7 @@ export class ProductsService {
       }
     }
 
+    // Merges properties safely onto the entity tracking proxy instance
     Object.assign(product, updateDto);
 
     return this.productRepo.save(product);

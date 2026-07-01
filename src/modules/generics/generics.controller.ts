@@ -35,7 +35,7 @@ export class GenericsController {
   @RequirePermissions(Permission.GENERIC_CREATE)
   @UseGuards(JwtOrApiKeyGuard, PermissionsGuard)
   @Throttle({ default: { limit: 20, ttl: 180 } })
-  @Post('create')
+  @Post()
   create(@Req() req: Request, @Body() createGenericDto: CreateGenericDto) {
     return this.genericsService.create(req, createGenericDto);
   }

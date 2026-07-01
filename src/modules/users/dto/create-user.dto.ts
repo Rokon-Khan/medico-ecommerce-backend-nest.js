@@ -52,7 +52,7 @@ export class CreateUserDto {
     required: false,
   })
   @IsNumber()
-  division_id: number;
+  division_id?: number;
 
   @ApiProperty({
     description: 'District ID',
@@ -60,7 +60,7 @@ export class CreateUserDto {
     required: false,
   })
   @IsNumber()
-  district_id: number;
+  district_id?: number;
 
   @ApiProperty({
     description: 'Upazila ID',

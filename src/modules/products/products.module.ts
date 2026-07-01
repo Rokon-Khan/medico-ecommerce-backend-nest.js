@@ -7,11 +7,13 @@ import { ProductCategory } from '../product-category/entities/product-category.e
 import { Generic } from '../generics/entities/generic.entity';
 import { Brand } from '../brands/entities/brand.entity';
 import { ProductSearchModule } from '../product-search/product-search.module';
+import { ProductVariant } from '../product-variants/entities/product-variant.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Product, ProductCategory, Generic, Brand]),
     ProductSearchModule,
+    ProductVariant,
   ],
   controllers: [ProductsController],
   providers: [ProductsService],

@@ -48,7 +48,7 @@ export class ProductsController {
   @UseGuards(JwtOrApiKeyGuard, PermissionsGuard)
   @UseInterceptors(FileInterceptor('thumbnail'))
   @Throttle({ default: { limit: 20, ttl: 180 } })
-  @Post('create')
+  @Post()
   create(
     @Req() req: Request,
     @Body() createProductDto: CreateProductDto,

@@ -87,6 +87,8 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.AUDIT_LOG_DELETE,
     Permission.AUDIT_LOG_MANAGE,
 
+    Permission.PRODUCT_UPDATE,
+
     //  Order Tracking Permissions
 
     Permission.ORDER_TRACKING_UPDATE,
