@@ -53,7 +53,6 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.ADDRESS_MANAGE,
 
     Permission.ORDER_DELETE,
-    Permission.ORDER_CREATE,
 
     Permission.PAYMENT_READ,
     Permission.PAYMENT_UPDATE,
@@ -124,6 +123,8 @@ export const RoleBasedPermissions: Record<Role, Permission[]> = {
     Permission.PRODUCT_READ,
     Permission.PROFILE_READ,
     Permission.PROFILE_UPDATE,
+
+    Permission.ORDER_CREATE,
 
     Permission.PRODUCT_CATEGORY_READ,
     Permission.PRODUCT_DETAIL_READ,

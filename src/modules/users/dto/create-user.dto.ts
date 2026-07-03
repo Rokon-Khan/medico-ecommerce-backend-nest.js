@@ -1,4 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsString,
   IsEmail,
@@ -9,6 +10,7 @@ import {
   Matches,
   IsBoolean,
   IsOptional,
+  IsInt,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -46,28 +48,31 @@ export class CreateUserDto {
   })
   password: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
+    example: 30,
     description: 'Division ID',
-    example: 1,
-    required: false,
   })
-  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
   division_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
+    example: 3026,
     description: 'District ID',
-    example: 10,
-    required: false,
   })
-  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
   district_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
+    example: 302654,
     description: 'Upazila ID',
-    example: 101,
-    required: false,
   })
-  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
   upazila_id?: number;
 
   @ApiProperty({

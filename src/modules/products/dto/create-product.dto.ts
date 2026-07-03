@@ -171,6 +171,7 @@ export class ProductResponseDto {
   category?: {
     id: string;
     name: string;
+    slug: string;
   };
 
   @ApiProperty({

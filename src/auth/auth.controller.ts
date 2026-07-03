@@ -83,7 +83,7 @@ export class AuthController {
     return this.authService.getMe(req);
   }
 
- @UseGuards(JwtOrApiKeyGuard)
+  @UseGuards(JwtOrApiKeyGuard)
   @Get('verify')
   @ApiDoc({
     summary: 'Verify user',
@@ -115,7 +115,6 @@ export class AuthController {
     };
   }
 
-
   /**
    * Resend OTP
    */
@@ -142,7 +141,6 @@ export class AuthController {
     status: HttpStatus.OK,
   })
   @Throttle({ default: { limit: 3, ttl: 60 * 60 } }) // per 24 hours an user can try 3 times
-  
   @Post('forget-password/resend-otp')
   public async resendOTPForForgetPassword(
     @Body() dto: ForgetPasswordOtpDto,

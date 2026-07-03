@@ -71,6 +71,10 @@ export class AddressService {
         'division',
         'district',
         'area',
+        'city',
+        'state',
+        'zip',
+        'country',
       ],
 
       select: [
@@ -82,6 +86,10 @@ export class AddressService {
         'division',
         'district',
         'area',
+        'city',
+        'state',
+        'zip',
+        'country',
         'address',
         'is_default',
         'created_at',
@@ -103,33 +111,36 @@ export class AddressService {
       throw new NotFoundException('Address not found.');
     }
 
-    return {
+    // ✅ Build response with proper type handling
+    const response: AddressResponseDto = {
       id: address.id,
-
       user_id: address.user_id,
-
-      full_name: address.full_name,
+      full_name: address.full_name || '',
       phone: address.phone,
-      email: address.email,
-
-      division: address.division,
-      district: address.district,
-      area: address.area,
+      email: address.email || '',
+      division: address.division || '',
+      district: address.district || '',
+      area: address.area || '',
+      city: address.city || '',
+      state: address.state || '',
+      zip: address.zip || '',
+      country: address.country || '',
       address: address.address,
-
       is_default: address.is_default,
-
-      user: address.user
-        ? {
-            id: address.user.id,
-            name: address.user.name,
-            email: address.user.email,
-          }
-        : undefined,
-
       created_at: address.created_at,
       updated_at: address.updated_at,
     };
+
+    // ✅ Add user if exists with proper name handling
+    if (address.user) {
+      response.user = {
+        id: address.user.id,
+        name: address.user.name || 'User', // Default if undefined
+        email: address.user.email,
+      };
+    }
+
+    return response;
   }
 
   /**

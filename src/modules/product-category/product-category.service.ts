@@ -83,9 +83,9 @@ export class ProductCategoryService {
       alias: 'category',
       pagination: query,
 
-      searchableFields: ['name'],
+      searchableFields: ['name', 'slug'],
 
-      select: ['id', 'name', 'image', 'created_at', 'updated_at'],
+      select: ['id', 'name', 'slug', 'image', 'created_at', 'updated_at'],
     });
   }
 
@@ -104,6 +104,7 @@ export class ProductCategoryService {
     return {
       id: category.id,
       name: category.name,
+      slug: category.slug,
       image: category.image,
       addedBy: category.addedBy
         ? {

@@ -11,6 +11,14 @@ export class CreateProductCategoryDto {
   name: string;
 
   @ApiProperty({
+    description: 'Slug for the product category',
+    example: 'premium-bags',
+  })
+  @IsString()
+  @IsNotEmpty()
+  slug: string;
+
+  @ApiProperty({
     description: 'Optional category display banner or thumbnail image URL',
     example: 'https://example.com/categories/premium-bags.jpg',
     required: false,
@@ -29,6 +37,9 @@ export class ProductCategoryResponseDto {
 
   @ApiProperty({ description: 'Name of the product category' })
   name: string;
+
+  @ApiProperty({ description: 'Slug for the product category' })
+  slug: string;
 
   @ApiProperty({
     description: 'Category image URL',

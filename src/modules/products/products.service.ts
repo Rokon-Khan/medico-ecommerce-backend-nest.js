@@ -1,3 +1,4 @@
+// src/modules/products/products.service.ts
 import {
   Injectable,
   BadRequestException,
@@ -6,22 +7,26 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Not } from 'typeorm';
+import { Repository, Not, Like, FindOptionsWhere } from 'typeorm';
 import { Request } from 'express';
 
 import { Product } from './entities/product.entity';
-import { CreateProductDto, ProductResponseDto } from './dto/create-product.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 
 import { DataQueryService } from 'src/common/data-query/data-query.service';
 import { IPagination } from 'src/common/data-query/pagination.interface';
 import { FileUploadsService } from 'src/common/file-uploads/file-uploads.service';
+import { ProductCategory } from '../product-category/entities/product-category.entity';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productRepo: Repository<Product>,
+
+    @InjectRepository(ProductCategory)
+    private readonly categoryRepo: Repository<ProductCategory>,
 
     private readonly dataQueryService: DataQueryService,
 
@@ -79,17 +84,109 @@ export class ProductsService {
     return this.productRepo.save(product);
   }
 
-  // Change IPagination<Product> to IPagination<any> or your custom response interface
+  // ✅ FIXED: Support category filtering by name or ID
+  // src/modules/products/products.service.ts
   async findAll(query: any): Promise<IPagination<any>> {
+    const { category, categoryId, categoryName, ...restQuery } = query;
+
+    let whereClause: any = {};
+
+    // 1. Category filter by ID (most reliable)
+    if (categoryId) {
+      whereClause = {
+        category: {
+          id: categoryId,
+        },
+      };
+    }
+    // 2. Category filter by slug OR exact name
+    else if (category) {
+      const foundCategory = await this.categoryRepo.findOne({
+        where: [
+          { slug: category }, // Try matching slug first
+          { name: category }, // Fallback to exact name match
+        ],
+      });
+
+      if (foundCategory) {
+        whereClause = {
+          category: {
+            id: foundCategory.id,
+          },
+        };
+      } else {
+        return this.emptyPaginationResult();
+      }
+    }
+    // 3. Category name with Like partial match
+    else if (categoryName) {
+      const foundCategory = await this.categoryRepo.findOne({
+        where: {
+          name: Like(`%${categoryName}%`),
+        },
+      });
+
+      if (foundCategory) {
+        whereClause = {
+          category: {
+            id: foundCategory.id,
+          },
+        };
+      } else {
+        return this.emptyPaginationResult();
+      }
+    }
+
+    const paginatedResult = await this.dataQueryService.execute<Product>({
+      repository: this.productRepo,
+      alias: 'product',
+      pagination: restQuery,
+      searchableFields: ['name', 'slug', 'manufacturer', 'brand.name'],
+      relations: ['variants', 'category', 'brand'],
+      where: whereClause,
+    });
+
+    return this.mapProductData(paginatedResult);
+  }
+
+  // Helper to keep code clean and dry
+  private emptyPaginationResult() {
+    return {
+      data: [],
+      meta: {
+        total: 0,
+        page: 1,
+        limit: 100,
+        totalPages: 0,
+      },
+    };
+  }
+
+  // ✅ Get products by category ID with proper filtering
+  private async findByCategoryId(
+    categoryId: string,
+    query: any,
+  ): Promise<IPagination<any>> {
     const paginatedResult = await this.dataQueryService.execute<Product>({
       repository: this.productRepo,
       alias: 'product',
       pagination: query,
-      searchableFields: ['name', 'slug', 'manufacturer'],
+      searchableFields: ['name', 'slug', 'manufacturer', 'brand.name'],
       relations: ['variants', 'category', 'brand'],
+      where: {
+        category: {
+          id: categoryId,
+        },
+      } as any,
     });
 
-    // Typecast or map the inner data safely
+    return this.mapProductData(paginatedResult);
+  }
+
+  // ✅ Map product data to response format
+  private mapProductData(
+    paginatedResult: IPagination<Product>,
+  ): IPagination<any> {
     const mappedData = paginatedResult.data.map((product) => {
       const activeVariants = product.variants?.filter((v) => v.is_active) || [];
 
@@ -116,7 +213,11 @@ export class ProductsService {
         is_prescription_required: product.is_prescription_required,
         is_active: product.is_active,
         category: product.category
-          ? { id: product.category.id, name: product.category.name }
+          ? {
+              id: product.category.id,
+              name: product.category.name,
+              slug: product.category.slug,
+            }
           : null,
         brand: product.brand
           ? { id: product.brand.id, name: product.brand.name }
@@ -140,16 +241,47 @@ export class ProductsService {
       };
     });
 
-    // Return a new combined object instead of modifying paginatedResult.data directly
-    // if your dataQueryService has strict internal mutations.
     return {
       ...paginatedResult,
       data: mappedData,
     };
   }
 
+  // ✅ Get products by category ID (public method)
+  async findByCategory(
+    categoryId: string,
+    query: any,
+  ): Promise<IPagination<any>> {
+    return this.findByCategoryId(categoryId, query);
+  }
+
+  // ✅ Get products by category name (public method)
+  async findByCategoryName(
+    categoryName: string,
+    query: any,
+  ): Promise<IPagination<any>> {
+    const foundCategory = await this.categoryRepo.findOne({
+      where: {
+        name: Like(`%${categoryName}%`),
+      },
+    });
+
+    if (!foundCategory) {
+      return {
+        data: [],
+        meta: {
+          total: 0,
+          page: 1,
+          limit: 100,
+          totalPages: 0,
+        },
+      };
+    }
+
+    return this.findByCategoryId(foundCategory.id, query);
+  }
+
   async findOne(id: string): Promise<any> {
-    // Or update your ProductResponseDto type definition
     const product = await this.productRepo.findOne({
       where: { id },
       relations: ['category', 'generic', 'brand', 'addedBy', 'variants'],
@@ -161,12 +293,10 @@ export class ProductsService {
 
     const activeVariants = product.variants?.filter((v) => v.is_active) || [];
 
-    // Calculate price range
     const prices = activeVariants.map((v) => Number(v.price));
     const minPrice = prices.length ? Math.min(...prices) : 0;
     const maxPrice = prices.length ? Math.max(...prices) : 0;
 
-    // Calculate discount range
     const discountPrices = activeVariants.map((v) =>
       Number(v.discount_price || v.price),
     );
@@ -184,23 +314,22 @@ export class ProductsService {
       manufacturer: product.manufacturer,
       is_active: product.is_active,
       is_prescription_required: product.is_prescription_required,
-
       meta_title: product.meta_title,
       meta_keywords: product.meta_keywords,
       meta_description: product.meta_description,
-
       category: product.category
-        ? { id: product.category.id, name: product.category.name }
+        ? {
+            id: product.category.id,
+            name: product.category.name,
+            slug: product.category.slug,
+          }
         : undefined,
-
       generic: product.generic
         ? { id: product.generic.id, name: product.generic.name }
         : undefined,
-
       brand: product.brand
         ? { id: product.brand.id, name: product.brand.name }
         : undefined,
-
       variants: activeVariants.map((v) => ({
         id: v.id,
         strength: v.strength,
@@ -213,7 +342,6 @@ export class ProductsService {
         expiry_date: v.expiry_date,
         is_active: v.is_active,
       })),
-
       price_range: {
         min: minPrice,
         max: maxPrice,
@@ -222,11 +350,9 @@ export class ProductsService {
         min: minDiscount,
         max: maxDiscount,
       },
-
       addedBy: product.addedBy
         ? { id: product.addedBy.id, name: product.addedBy.name }
         : undefined,
-
       created_at: product.created_at,
       updated_at: product.updated_at,
     };
@@ -298,7 +424,6 @@ export class ProductsService {
       }
     }
 
-    // Merges properties safely onto the entity tracking proxy instance
     Object.assign(product, updateDto);
 
     return this.productRepo.save(product);

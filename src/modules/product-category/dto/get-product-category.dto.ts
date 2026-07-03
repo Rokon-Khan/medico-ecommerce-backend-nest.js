@@ -10,6 +10,14 @@ class GetProductCategoryBaseDto {
   @IsOptional()
   @IsString()
   name?: string;
+
+  @ApiPropertyOptional({
+    description: 'Filter by team member slug (partial match)',
+    example: 'john-doe',
+  })
+  @IsOptional()
+  @IsString()
+  slug?: string;
 }
 
 export class GetProductCategoryDto extends IntersectionType(

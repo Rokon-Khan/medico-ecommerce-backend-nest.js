@@ -44,7 +44,7 @@ async function bootstrap() {
     .addServer('http://localhost:5000/api/v1')
     .setTermsOfService('http://localhost:5000/api/v1/terms-of-conditions')
     .setVersion('1.0.0')
-    .addTag('nest-nest-starter-api')
+    // .addTag('nest-nest-starter-api')
     .addBearerAuth(
       {
         type: 'http',

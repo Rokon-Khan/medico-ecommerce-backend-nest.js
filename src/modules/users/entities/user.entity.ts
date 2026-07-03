@@ -47,7 +47,6 @@ export class User {
   @Column({ type: 'boolean', default: false })
   has_refresh_token: boolean;
 
-
   /**
    * Is Account Verified
    */

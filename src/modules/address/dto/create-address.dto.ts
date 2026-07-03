@@ -1,151 +1,103 @@
+// create-address.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsString,
   IsBoolean,
+  IsOptional,
+  IsUUID,
   IsEmail,
   IsNotEmpty,
-  IsOptional,
-  IsString,
-  IsUUID,
-  MaxLength,
 } from 'class-validator';
 
 export class CreateAddressDto {
-  @ApiProperty({
-    example: '8d4c1f0d-0e17-49df-a7e3-43c83f08b2f2',
-  })
+  @ApiProperty()
   @IsUUID()
+  @IsNotEmpty()
   user_id: string;
 
-  @ApiProperty({
-    example: 'Zamirul Kabir',
-  })
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  @MaxLength(255)
-  full_name: string;
+  full_name?: string;
 
-  @ApiProperty({
-    example: '01712345678',
-  })
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  @MaxLength(20)
   phone: string;
 
-  @ApiProperty({
-    example: 'Dhaka',
-  })
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(100)
-  division: string;
-
-  @ApiProperty({
-    example: 'Dhaka',
-  })
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(100)
-  district: string;
-
-  @ApiProperty({
-    example: 'Mirpur-10',
-  })
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(100)
-  area: string;
-
-  @ApiProperty({
-    example: 'House-10, Road-5, Block-C, Mirpur-10',
-  })
-  @IsString()
-  @IsNotEmpty()
-  address: string;
-
-  @ApiProperty({
-    example: 'zamirul@example.com',
-    required: false,
-  })
+  @ApiProperty({ required: false })
   @IsOptional()
   @IsEmail()
   email?: string;
 
-  @ApiProperty({
-    example: true,
-  })
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  division?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  district?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  area?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  city?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  state?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  zip?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  country?: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  address: string;
+
+  @ApiProperty({ default: false })
   @IsBoolean()
   @IsOptional()
   is_default?: boolean;
 }
 
+// ✅ Add AddressResponseDto here
+// create-address.dto.ts
 export class AddressResponseDto {
-  @ApiProperty({
-    description: 'Address UUID',
-  })
   id: string;
-
-  @ApiProperty({
-    description: 'User ID',
-  })
   user_id: string;
-
-  @ApiProperty({
-    description: 'Full Name',
-  })
-  full_name: string;
-
-  @ApiProperty({
-    description: 'Phone Number',
-  })
+  full_name: string; // Make sure this is string, not optional
   phone: string;
-
-  @ApiProperty({
-    description: 'Division',
-  })
+  email: string;
   division: string;
-
-  @ApiProperty({
-    description: 'District',
-  })
   district: string;
-
-  @ApiProperty({
-    description: 'Area',
-  })
   area: string;
-
-  @ApiProperty({
-    description: 'Full Address',
-  })
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
   address: string;
-  @ApiProperty({
-    example: 'zamirul@example.com',
-    required: false,
-  })
-  @IsOptional()
-  @IsEmail()
-  email?: string;
-
-  @ApiProperty({
-    description: 'Default Address',
-  })
   is_default: boolean;
-
-  @ApiProperty({
-    description: 'User Information',
-    required: false,
-    type: Object,
-  })
   user?: {
     id: string;
-    name?: string;
-    email?: string;
+    name: string; // Make sure this is string, not optional
+    email: string;
   };
-
-  @ApiProperty()
   created_at: Date;
-
-  @ApiProperty()
   updated_at: Date;
 }

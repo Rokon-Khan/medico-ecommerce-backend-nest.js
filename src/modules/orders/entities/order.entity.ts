@@ -87,6 +87,10 @@ export class Order {
   @Column({ type: 'varchar', length: 50, default: 'pending' })
   order_status: string;
 
+  // ✅ ADD THIS - PAYMENT METHOD
+  @Column({ type: 'varchar', length: 50, default: 'COD' })
+  payment_method: string;
+
   @OneToMany(() => OrderItem, (item) => item.order)
   items: OrderItem[];
 

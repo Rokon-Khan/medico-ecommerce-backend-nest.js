@@ -1,3 +1,4 @@
+// src/modules/products/products.controller.ts
 import {
   Controller,
   Get,
@@ -14,7 +15,6 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-
 import { ProductsService } from './products.service';
 import { CreateProductDto, ProductResponseDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -66,6 +66,33 @@ export class ProductsController {
   @Get()
   findAll(@Query() query: any) {
     return this.productsService.findAll(query);
+  }
+
+  // ✅ Get products by category ID
+  @ApiDoc({
+    summary: 'Get products by category',
+    description: 'Retrieves all products by category ID.',
+    response: ProductResponseDto,
+    status: HttpStatus.OK,
+  })
+  @Get('category/:categoryId')
+  findByCategory(
+    @Param('categoryId', ParseUUIDPipe) categoryId: string,
+    @Query() query: any,
+  ) {
+    return this.productsService.findByCategory(categoryId, query);
+  }
+
+  // ✅ Get products by category name
+  @ApiDoc({
+    summary: 'Get products by category name',
+    description: 'Retrieves all products by category name.',
+    response: ProductResponseDto,
+    status: HttpStatus.OK,
+  })
+  @Get('category-name/:name')
+  findByCategoryName(@Param('name') name: string, @Query() query: any) {
+    return this.productsService.findByCategoryName(name, query);
   }
 
   @ApiDoc({

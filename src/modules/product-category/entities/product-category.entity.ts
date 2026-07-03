@@ -27,6 +27,14 @@ export class ProductCategory {
   })
   added_by: string;
 
+  @Column({
+    type: 'varchar',
+    length: 255,
+    unique: true,
+    nullable: true,
+  })
+  slug: string;
+
   @ManyToOne(() => User, { nullable: false, onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'added_by' })
   addedBy: User;
