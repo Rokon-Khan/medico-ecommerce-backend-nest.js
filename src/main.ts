@@ -74,28 +74,20 @@ async function bootstrap() {
   // CORS Configaration
   app.enableCors({
     origin: [
-      '*',
-      'http://localhost:5173',
-      'https://tripwheel.vercel.app',
-      'https://tripwheel.netlify.app',
-      'https://kz5xbsbg-5173.asse.devtunnels.ms',
+      'http://localhost:3000',
+      'https://medico-e-commerce-website-next-js-f.vercel.app',
       configService.getOrThrow<string>('FRONTEND_URL'),
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
       'Content-Type',
       'Authorization',
       'Accept',
       'Origin',
       'X-Requested-With',
-      'Access-Control-Allow-Origin',
-      'Access-Control-Allow-Headers',
-      'Access-Control-Allow-Methods',
     ],
     exposedHeaders: ['Content-Disposition', 'Content-Type', 'Content-Length'],
-    credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
   });
 
   const PORT = configService.get<number>('SERVER_PORT') || 5000;
