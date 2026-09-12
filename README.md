@@ -420,6 +420,6 @@ npm run start:dev
 License
 This project is proprietary and confidential.
 
-Copyright © 2024 Medico. All rights reserved.
+Copyright © 2026 Medico. All rights reserved.
 
-Lead Developer Zamirul Kabir zamirulkabir999@gmail.com
+Lead Developer Md Rokonuzzaman rokonjust@gmail.com

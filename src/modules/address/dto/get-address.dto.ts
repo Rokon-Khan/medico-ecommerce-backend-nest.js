@@ -20,7 +20,7 @@ class GetAddressBaseDto {
 
   @ApiPropertyOptional({
     description: 'Filter by full name',
-    example: 'Zamirul Kabir',
+    example: 'Md Rokonuzzaman',
   })
   @IsOptional()
   @IsString()
