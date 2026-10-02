@@ -385,8 +385,7 @@ Admin Override Capability
 
 ```js
 
-git clone https://github.com/yourusername/medico-backend.git
-
+git clone https://github.com/Rokon-Khan/medico-ecommerce-backend-nest.js
 
 ```
 
